@@ -1,0 +1,13 @@
+.mensaje {
+  font-size: 1em;
+}
+
+&.mensaje-exito {
+  background-color: #29F4B0;
+  color: #000000;
+}
+
+&.mensaje-error {
+  background-color: #FB7D81;
+  color: #000000;
+}

@@ -1,0 +1,68 @@
+{
+  "heroes": [
+    {
+      "id": 1,
+      "name": "Wonder Woman",
+      "poderes": "Fuerza sobrehumana, Supervelocidad",
+      "descripcion": "Wonder Woman es considerada una de las superheroínas más fuertes del planeta.",
+      "lugar": "Sevilla, Esp.",
+      "imagen": "https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/807.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Hulk",
+      "poderes": "Super fuerte y enojón",
+      "descripcion": "Hulk es un ser colosal con una musculatura impresionante que parece desafiar los límites de lo humano.",
+      "lugar": "Barcelona, Esp.", 
+      "imagen": "https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/83.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Capitana Marvel",
+      "poderes": "Curación acelerada e inmortal",
+      "descripcion": "La Capitana Marvel obtuvo sus poderes cósmicos del Teseracto, que albergaba la gema del espacio.",
+      "lugar": "New York, USA.",
+      "imagen": "https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/103.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Spiderman",
+      "poderes": "Superpoderes arácnidos",
+      "descripcion": "Fuerza, velocidad, agilidad, durabilidad, reflejos, coordinación, equilibrio y resistencia sobrehumanas.",
+      "lugar": "Mallorca, Esp.", 
+      "imagen": "https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/133.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Gamora",
+      "poderes": "Experta en artes marciales",
+      "descripcion": "Gamora es una combatiente cuerpo a cuerpo y una maestra en el uso de armas. Es una tiradora experta.",
+      "lugar": "Culiacán, Méx.",
+      "imagen": "https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/65.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Batman",
+      "poderes": "Una gran fortuna",
+      "descripcion": "Batman utiliza su intelecto y aplicaciones científicas para desarrollar gadgets y vehículos.",
+      "lugar": "Ciudad de México, Méx.",
+      "imagen": "https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/639.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Viuda Negra",
+      "poderes": "Exespía soviética, artista marcial y francotiradora",
+      "descripcion": "Natasha nació en Rusia durante la Guerra Fría y fue entrenada por la KGB",
+      "lugar": "Sevilla, Esp.",
+      "imagen": "https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/248.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Ironman",
+      "poderes": "Armadura",
+      "descripcion": "La armadura de Iron Man está hecha de nanotecnología y se almacena en un reactor que Tony Stark lleva en el pecho.",
+      "lugar": "Buenos Aires, Arg.",
+      "imagen": "https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/85.jpg"
+    }
+  ]
+}

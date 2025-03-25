@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Carga la fuente de iconos de Google para que carguen los de Angular-->
+  <title>Home</title>
+</head>
+
+<body>
+  <header class="header">
+    <img src="header.png" alt="header" class="header_img">
+    <img src="logo.svg" alt="logo" class="header_logo">
+    <div class="header_txt">
+      <p>CRUD</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="barra-busqueda">
+      <div class="barra-busqueda_contenedor">
+        <input type="text" class="barra-busqueda_contenedor_input" matInput placeholder="Busca un héroe">
+        <button mat-icon-button class="barra-busqueda_contenedor_icono">
+          <mat-icon>search</mat-icon>
+        </button>
+      </div>
+
+      <div class="barra-busqueda_botones">
+        <button mat-flat-button>
+         Crear nuevo héroe
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="heroes_txt">
+      <h2>Héroes más allá de la imaginación</h2>
+      <p>Desde tiempos inmemoriales, la humanidad ha soñado con figuras extraordinarias capaces de desafiar los
+        límites de la realidad.</p>
+    </div>
+  </section>
+
+  <section class="hero-section">
+    <div class="hero-section_grid">
+      <div class="hero-section_grid-item" *ngFor="let heroe of heroes">
+        <mat-card class="hero-section_card">
+          <img mat-card-image [src]="heroe.imagen" alt="{{ heroe.name }}" class="hero-section__card-img">
+          <mat-card-title class="hero-section_card-title">{{ heroe.name }}</mat-card-title>
+          <mat-card-subtitle class="hero-section_card-subtitle">{{ heroe.poderes }}</mat-card-subtitle>
+          <mat-card-content class="hero-section_card-contenido">
+            <p class="hero-section_card-descripcion">{{ heroe.descripcion }}</p>
+            <p class="hero-section_card-lugar">{{ heroe.lugar }}</p>
+          </mat-card-content>
+          <mat-card-actions class="hero-section_card-actions">
+            <button mat-button class="hero-section_card-button">Editar</button>
+            <button mat-button class="hero-section_card-button">Eliminar</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+    <p>&#64;2025 SUPERHEROCRUD, Inc</p>
+    <div class="ico-rrss">
+
+    </div>
+  </footer>
+</body>
+
+</html>

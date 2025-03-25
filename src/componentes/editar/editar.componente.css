@@ -1,0 +1,121 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#form-div {
+  width: 936px;
+  height: auto;
+  background-color: #FFFFFF;
+  padding: 18px;
+  border-radius: 1em;
+  border: solid rgb(211, 209, 209) 1px;
+}
+
+#form-titulo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#tit-crear {
+  margin: 0;
+  text-align: center;
+  flex-grow: 1;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1.2em;
+}
+
+#btn-cerrar {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1.5em;
+  background: none;
+  border: none;
+}
+
+.input-nombre {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1em;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  width: 50%;
+}
+
+#fila-linea1 {
+  display: flex;
+  justify-content: left;
+  gap: 18px;
+  width: 888px;
+}
+
+#input1,
+#input2 {
+  background-color: rgba(37, 78, 126, 0.0901960784);
+  border: 1.5px;
+  border-radius: 8px;
+  padding: 12px;
+  width: 427px;
+}
+
+#input3,
+#input4,
+textarea {
+  background-color: rgba(37, 78, 126, 0.0901960784);
+  border: 1.5px;
+  border-radius: 8px;
+  padding: 12px;
+  width: 888px;
+}
+
+#label-input5 {
+  font-weight: lighter;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1em;
+}
+
+#txt-img {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1em;
+  margin-bottom: 0.6em;
+}
+
+#btn-editarform {
+  background-color: #E7D8FE;
+  width: 135px;
+  padding: 9px;
+  border-color: #E7D8FE;
+  display: flex;
+  justify-self: right;
+  justify-content: center;
+  border-radius: 200px;
+}
+
+#btn-archivo {
+  background-color: #E7D8FE;
+  width: 144px;
+  padding: 9px;
+  border-color: #E7D8FE;
+  display: flex;
+  justify-self: left;
+  justify-content: center;
+  border-radius: 200px;
+}
+
+#fila-linea2 {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  width: 100%;
+  padding-top: 2.5em;
+}/*# sourceMappingURL=editar.componente.css.map */
