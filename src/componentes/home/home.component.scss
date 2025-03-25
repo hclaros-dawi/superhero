@@ -38,6 +38,7 @@ body {
     height: 4.8125rem;
     left: 78rem;
     top: 22.75rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   }
 }
 
@@ -47,13 +48,10 @@ body {
   align-items: center;
   margin: 1.25rem;
   position: relative;
-  width: 100%;
-  height: 5.75rem;
 
   &_contenedor {
     position: relative; //contenedor sobre el que se van a posicionar
     border-radius: 3.8em;
-    background-color: #FFFFFF;
     box-shadow: .0rem .15rem .2rem #939191;
     display: flex;
     align-items: center;
@@ -62,16 +60,18 @@ body {
 
     &_input {
       border-style: none;
-      outline: none;
-      padding-left: 2rem;
+      padding-left: 1.3rem;
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
       font-size: 1rem;
+      background-color: transparent;
     }
 
     &_icono {
       position: absolute; //el que se va a sobreponer
       background-color: #8A42FB;
-      right: 1em;
+      right: 0.7rem;
+      width: 3.5rem;
+      height: 3.5rem;
 
       mat-icon {
         color: #FFFFFF;
@@ -79,63 +79,164 @@ body {
     }
 
     &::placeholder {
-      padding: 1rem;
+      padding: 0.6rem;
+    }
+  }
+
+  &_botones {
+    font-size: 1rem;
+    padding-left: 3rem;
+
+    .barra-busqueda_botones_boton {
+      //porque genera un selector incorrecto porque el & hace referencia a la clase principal y no pasa por botones
+      background-color: #8A42FB;
+      color: white;
     }
   }
 }
 
 .heroes_txt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  margin-top: 7.5rem;
+  margin-top: 3rem;
   width: 100%;
 
   h2 {
     font-size: 1.9375rem;
     font-weight: bold;
     color: #8A42FB;
+    line-height: 140%;
+    width: 32.9375rem;
+    height: 2.6875rem;
   }
 
   p {
     font-size: 1rem;
     color: #343434;
     line-height: 140%;
+    width: 41.25rem;
+    height: 2.75rem;
+    margin-bottom: 1.5rem;
   }
 }
 
 .hero-section {
-  padding: 2rem;
-
   &_grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(4, 18rem);
     gap: 1.5rem;
-    background-color: #d84141;
-    width: 100%;
-    max-width: 136rem;
-    height: 100hv;
+    justify-content: center;
+    align-items: center;
     margin: auto;
+
+    &_items {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      box-shadow: .03rem .3rem 1.375rem #d3d3d3;
+
+      &_card {
+        max-height: 100%;
+        border-radius: 0;
+        background-color: #FFFFFF;
+
+        img {
+          height: 21rem;
+        }
+
+        &_title {
+          margin: 1rem;
+          width: 17.875rem;
+          height: 1.75rem;
+          line-height: 140%;
+          font-size: 1.25rem;
+          font-weight: bold;
+        }
+
+        &_subtitle {
+          margin-left: 1rem;
+          width: 15rem;
+          height: 3rem;
+          line-height: 140%;
+          font-size: 1rem;
+          font-weight: bold;
+        }
+
+        &_contenido {
+          &_descripcion {
+            font-size: .875rem;
+            width: 100%;
+            height: 2.5rem;
+            line-height: 140%;
+            margin-top: 0.1rem;
+          }
+
+          &_lugar {
+            font-size: 1rem;
+            width: 19em;
+            height: 1.5rem;
+            line-height: 140%;
+            margin-top: 2.6rem;
+          }
+        }
+      }
+
+      &_actions {
+        display: flex;
+        justify-content: space-around;
+
+        &_editar {
+          width: 7rem;
+        }
+
+        .hero-section_grid_items_actions_editar {
+          //porque & nos lleva al padre y es para coger la ruta de clases específica
+          background-color: #8A42FB;
+        }
+
+        &_eliminar {
+          width: 7rem;
+        }
+
+        .hero-section_grid_items_actions_eliminar {
+          background-color: #F3F3F3;
+          color: #343434;
+        }
+      }
+    }
   }
 
-  &_grid-item {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  &_ver-mas-section {
     display: flex;
-  }
+    justify-content: center;
+    align-items: center;
+    margin-top: 2.9rem;
 
-  &_section-card {
+    &_boton {
+      width: 7rem;
+    }
+
+    .hero-section_ver-mas-section_boton {
+      background-color: #8A42FB;
+    }
+  }
+}
+
+.footer-section {
+  text-align: left;
+  width: 1235px;
+  height: 4rem;
+  border-color: #343434;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  margin-top: 2rem;
+  border-top: 0.1rem solid #0000001A;
+
+  &_contenido {
     width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
-    height: 100%;
   }
-}
-
-footer {
-  text-align: center;
-  margin-top: 3.125rem;
-}
-
-footer p {
-  margin: 0;
-  font-size: 1rem;
 }

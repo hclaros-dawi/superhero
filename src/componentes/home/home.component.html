@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Carga la fuente de iconos de Google para que carguen los de Angular-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Carga la fuente de iconos de Google -->
   <title>Home</title>
 </head>
 
@@ -21,15 +19,16 @@
   <section>
     <div class="barra-busqueda">
       <div class="barra-busqueda_contenedor">
-        <input type="text" class="barra-busqueda_contenedor_input" matInput placeholder="Busca un héroe">
+        <input matInput type="text" class="barra-busqueda_contenedor_input" placeholder="Busca un héroe">
         <button mat-icon-button class="barra-busqueda_contenedor_icono">
           <mat-icon>search</mat-icon>
         </button>
       </div>
 
       <div class="barra-busqueda_botones">
-        <button mat-flat-button>
-         Crear nuevo héroe
+        <button mat-flat-button class="barra-busqueda_botones_boton">
+          <mat-icon>add</mat-icon>
+          Crear nuevo héroe
         </button>
       </div>
     </div>
@@ -38,38 +37,50 @@
   <section>
     <div class="heroes_txt">
       <h2>Héroes más allá de la imaginación</h2>
-      <p>Desde tiempos inmemoriales, la humanidad ha soñado con figuras extraordinarias capaces de desafiar los
-        límites de la realidad.</p>
+      <p>Desde tiempos inmemoriales, la humanidad ha soñado con figuras extraordinarias capaces de desafiar los límites de la realidad.</p>
     </div>
-  </section>
+   </section>
 
   <section class="hero-section">
     <div class="hero-section_grid">
-      <div class="hero-section_grid-item" *ngFor="let heroe of heroes">
-        <mat-card class="hero-section_card">
+      <div class="hero-section_grid_items" *ngFor="let heroe of heroes">
+        <mat-card class="hero-section_grid_items_card">
           <img mat-card-image [src]="heroe.imagen" alt="{{ heroe.name }}" class="hero-section__card-img">
-          <mat-card-title class="hero-section_card-title">{{ heroe.name }}</mat-card-title>
-          <mat-card-subtitle class="hero-section_card-subtitle">{{ heroe.poderes }}</mat-card-subtitle>
-          <mat-card-content class="hero-section_card-contenido">
-            <p class="hero-section_card-descripcion">{{ heroe.descripcion }}</p>
-            <p class="hero-section_card-lugar">{{ heroe.lugar }}</p>
+          <mat-card-title class="hero-section_grid_items_card_title">{{ heroe.name }}</mat-card-title>
+          <mat-card-subtitle class="hero-section_grid_items_card_subtitle">{{ heroe.poderes }}</mat-card-subtitle>
+          <mat-card-content class="hero-section_grid_items_card_contenido">
+            <p class="hero-section_grid_items_card_contenido_descripcion">{{ heroe.descripcion }}</p>
+            <p class="hero-section_grid_items_card_contenido_lugar">{{ heroe.lugar }}</p>
           </mat-card-content>
-          <mat-card-actions class="hero-section_card-actions">
-            <button mat-button class="hero-section_card-button">Editar</button>
-            <button mat-button class="hero-section_card-button">Eliminar</button>
+          <mat-card-actions class="hero-section_grid_items_actions">
+            <button mat-flat-button class="hero-section_grid_items_actions_editar"><mat-icon>edit</mat-icon>Editar</button>
+            <button mat-flat-button class="hero-section_grid_items_actions_eliminar">Eliminar</button>
           </mat-card-actions>
         </mat-card>
       </div>
     </div>
+    <div class="hero-section_ver-mas-section">
+      <button mat-flat-button class="hero-section_ver-mas-section_boton">Ver más</button>
+    </div>
   </section>
 
-
-  <footer>
+  <footer class="footer-section">
+    <div class="footer-section_contenido">
     <p>&#64;2025 SUPERHEROCRUD, Inc</p>
-    <div class="ico-rrss">
+    <div class="footer-section_ico-rrss">
+      <button mat-icon-button>
+        <mat-icon>facebook</mat-icon>
+      </button>
 
+      <button mat-icon-button>
+        <mat-icon>twitter-x</mat-icon>
+        <img src="instagram.svg" alt="instagram-ico">
+        <img src="youtube.svg" alt="youtube-ico">
+        <img alt="linkedin-ico">
+        <img alt="twitter-ico">
+      </button>
+    </div>
     </div>
   </footer>
 </body>
-
 </html>
