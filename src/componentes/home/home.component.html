@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Carga la fuente de iconos de Google -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Carga la fuente de iconos de Google -->
   <title>Home</title>
 </head>
 
@@ -19,8 +21,8 @@
   <section>
     <div class="barra-busqueda">
       <div class="barra-busqueda_contenedor">
-        <input matInput type="text" class="barra-busqueda_contenedor_input" placeholder="Busca un héroe">
-        <button mat-icon-button class="barra-busqueda_contenedor_icono">
+        <input #heroeInput type="text" class="barra-busqueda_contenedor_input" placeholder="Busca un héroe">
+        <button mat-icon-button class="barra-busqueda_contenedor_icono" (click)="filtrarPorNombre(heroeInput.value)">
           <mat-icon>search</mat-icon>
         </button>
       </div>
@@ -37,50 +39,63 @@
   <section>
     <div class="heroes_txt">
       <h2>Héroes más allá de la imaginación</h2>
-      <p>Desde tiempos inmemoriales, la humanidad ha soñado con figuras extraordinarias capaces de desafiar los límites de la realidad.</p>
-    </div>
-   </section>
-
-  <section class="hero-section">
-    <div class="hero-section_grid">
-      <div class="hero-section_grid_items" *ngFor="let heroe of heroes">
-        <mat-card class="hero-section_grid_items_card">
-          <img mat-card-image [src]="heroe.imagen" alt="{{ heroe.name }}" class="hero-section__card-img">
-          <mat-card-title class="hero-section_grid_items_card_title">{{ heroe.name }}</mat-card-title>
-          <mat-card-subtitle class="hero-section_grid_items_card_subtitle">{{ heroe.poderes }}</mat-card-subtitle>
-          <mat-card-content class="hero-section_grid_items_card_contenido">
-            <p class="hero-section_grid_items_card_contenido_descripcion">{{ heroe.descripcion }}</p>
-            <p class="hero-section_grid_items_card_contenido_lugar">{{ heroe.lugar }}</p>
-          </mat-card-content>
-          <mat-card-actions class="hero-section_grid_items_actions">
-            <button mat-flat-button class="hero-section_grid_items_actions_editar"><mat-icon>edit</mat-icon>Editar</button>
-            <button mat-flat-button class="hero-section_grid_items_actions_eliminar">Eliminar</button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-    </div>
-    <div class="hero-section_ver-mas-section">
-      <button mat-flat-button class="hero-section_ver-mas-section_boton">Ver más</button>
+      <p>Desde tiempos inmemoriales, la humanidad ha soñado con figuras extraordinarias capaces de desafiar los límites
+        de la realidad.</p>
     </div>
   </section>
 
-  <footer class="footer-section">
-    <div class="footer-section_contenido">
-    <p>&#64;2025 SUPERHEROCRUD, Inc</p>
-    <div class="footer-section_ico-rrss">
-      <button mat-icon-button>
-        <mat-icon>facebook</mat-icon>
-      </button>
+  <div *ngIf="heroesFiltrados.length > 0; else mostrarTodos" class="tarjeta-unica">
+    <section class="hero-section">
+      <div class="hero-section_grid">
+        <div class="hero-section_grid_items" *ngFor="let heroe of heroesFiltrados">
+          <mat-card class="hero-section_grid_items_card">
+            <img mat-card-image [src]="heroe.imagen" alt="{{ heroe.name }}" class="hero-section_card-img">
+            <mat-card-title class="hero-section_grid_items_card_title">{{ heroe.name }}</mat-card-title>
+            <mat-card-subtitle class="hero-section_grid_items_card_subtitle">{{ heroe.poderes }}</mat-card-subtitle>
+            <mat-card-content class="hero-section_grid_items_card_contenido">
+              <p class="hero-section_grid_items_card_contenido_descripcion">{{ heroe.descripcion }}</p>
+              <p class="hero-section_grid_items_card_contenido_lugar">{{ heroe.lugar }}</p>
+            </mat-card-content>
+            <mat-card-actions class="hero-section_grid_items_actions">
+              <button mat-flat-button
+                class="hero-section_grid_items_actions_editar"><mat-icon>edit</mat-icon>Editar</button>
+              <button mat-flat-button class="hero-section_grid_items_actions_eliminar">Eliminar</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </section>
+  </div>
 
-      <button mat-icon-button>
-        <mat-icon>twitter-x</mat-icon>
-        <img src="instagram.svg" alt="instagram-ico">
-        <img src="youtube.svg" alt="youtube-ico">
-        <img alt="linkedin-ico">
-        <img alt="twitter-ico">
-      </button>
+  <ng-template #mostrarTodos>
+    <div *ngIf="heroesFiltrados.length === 0">
+      <section class="hero-section">
+        <div class="hero-section_grid">
+          <div class="hero-section_grid_items" *ngFor="let heroe of heroes">
+            <mat-card class="hero-section_grid_items_card">
+              <img mat-card-image [src]="heroe.imagen" alt="{{ heroe.name }}" class="hero-section_card-img">
+              <mat-card-title class="hero-section_grid_items_card_title">{{ heroe.name }}</mat-card-title>
+              <mat-card-subtitle class="hero-section_grid_items_card_subtitle">{{ heroe.poderes }}</mat-card-subtitle>
+              <mat-card-content class="hero-section_grid_items_card_contenido">
+                <p class="hero-section_grid_items_card_contenido_descripcion">{{ heroe.descripcion }}</p>
+                <p class="hero-section_grid_items_card_contenido_lugar">{{ heroe.lugar }}</p>
+              </mat-card-content>
+              <mat-card-actions class="hero-section_grid_items_actions">
+                <button mat-flat-button
+                  class="hero-section_grid_items_actions_editar"><mat-icon>edit</mat-icon>Editar</button>
+                <button mat-flat-button class="hero-section_grid_items_actions_eliminar">Eliminar</button>
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+      </section>
     </div>
-    </div>
-  </footer>
+  </ng-template>
+
+  <section class="ver-mas-section">
+    <button mat-flat-button class="ver-mas-section_boton">Ver más</button>
+  </section>
+  <app-footer></app-footer>
 </body>
+
 </html>

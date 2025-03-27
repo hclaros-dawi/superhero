@@ -1,0 +1,17 @@
+.footer-section {
+  text-align: left;
+  width: 1235px;
+  height: 4rem;
+  border-color: #343434;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  margin-top: 2rem;
+  border-top: 0.1rem solid rgba(0, 0, 0, 0.1019607843);
+  padding-top: 2rem;
+}
+.footer-section_contenido {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}/*# sourceMappingURL=footer.component.css.map */

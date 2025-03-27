@@ -56,11 +56,12 @@ body {
   height: 4.7rem;
 }
 .barra-busqueda_contenedor_input {
+  border: none;
+  outline: none;
   border-style: none;
   padding-left: 1.3rem;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: 1rem;
-  background-color: transparent;
 }
 .barra-busqueda_contenedor_icono {
   position: absolute;
@@ -180,32 +181,26 @@ body {
   background-color: #F3F3F3;
   color: #343434;
 }
-.hero-section_ver-mas-section {
+.hero-section .tarjeta-unica {
+  background-color: #8A42FB;
+  max-width: 20px;
+}
+.hero-section .tarjeta-unica_hero-section {
+  padding: 1rem;
+}
+.hero-section .tarjeta-unica_hero-section mat-card {
+  width: 10px;
+}
+
+.ver-mas-section {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 2.9rem;
 }
-.hero-section_ver-mas-section_boton {
+.ver-mas-section_boton {
   width: 7rem;
 }
-.hero-section_ver-mas-section .hero-section_ver-mas-section_boton {
+.ver-mas-section .ver-mas-section_boton {
   background-color: #8A42FB;
-}
-
-.footer-section {
-  text-align: left;
-  width: 1235px;
-  height: 4rem;
-  border-color: #343434;
-  display: flex;
-  align-items: center;
-  margin: auto;
-  margin-top: 2rem;
-  border-top: 0.1rem solid rgba(0, 0, 0, 0.1019607843);
-}
-.footer-section_contenido {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
 }/*# sourceMappingURL=home.component.css.map */

@@ -59,11 +59,12 @@ body {
     height: 4.7rem;
 
     &_input {
+      border: none;
+      outline: none;
       border-style: none;
       padding-left: 1.3rem;
       font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
       font-size: 1rem;
-      background-color: transparent;
     }
 
     &_icono {
@@ -123,6 +124,7 @@ body {
   }
 }
 
+//Para estilizar todos los héroes cuando no se encuentra el filtrado
 .hero-section {
   &_grid {
     display: grid;
@@ -207,7 +209,20 @@ body {
     }
   }
 
-  &_ver-mas-section {
+  //Para estilizar el heroe filtrado
+  .tarjeta-unica {
+    background-color: #8A42FB;
+    max-width: 20px;
+    &_hero-section {
+      padding: 1rem;
+      mat-card {
+        width: 10px;
+    }
+    }
+   }
+}
+
+  .ver-mas-section {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -217,26 +232,8 @@ body {
       width: 7rem;
     }
 
-    .hero-section_ver-mas-section_boton {
+    .ver-mas-section_boton {
       background-color: #8A42FB;
     }
   }
-}
 
-.footer-section {
-  text-align: left;
-  width: 1235px;
-  height: 4rem;
-  border-color: #343434;
-  display: flex;
-  align-items: center;
-  margin: auto;
-  margin-top: 2rem;
-  border-top: 0.1rem solid #0000001A;
-
-  &_contenido {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-}

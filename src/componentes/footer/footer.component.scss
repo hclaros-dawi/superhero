@@ -1,0 +1,18 @@
+.footer-section {
+  text-align: left;
+  width: 1235px;
+  height: 4rem;
+  border-color: #343434;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  margin-top: 2rem;
+  border-top: 0.1rem solid #0000001A;
+  padding-top: 2rem;
+
+  &_contenido {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
