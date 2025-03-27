@@ -63,6 +63,63 @@
       "descripcion": "La armadura de Iron Man está hecha de nanotecnología y se almacena en un reactor que Tony Stark lleva en el pecho.",
       "lugar": "Buenos Aires, Arg.",
       "imagen": "https:\/\/www.superherodb.com\/pictures2\/portraits\/10\/100\/85.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Black Panther",
+      "poderes": "Fuerza, velocidad y agilidad sobrehumanas",
+      "descripcion": "Black Panther es el rey de Wakanda, con habilidades mejoradas gracias a la hierba en forma de corazón.",
+      "lugar": "Wakanda",
+      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/247.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Deadpool",
+      "poderes": "Regeneración celular, habilidad para la lucha",
+      "descripcion": "Deadpool es un mercenario con una capacidad de regeneración asombrosa que le permite curarse de casi cualquier herida.",
+      "lugar": "Toronto, Can.",
+      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/835.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Thor",
+      "poderes": "Fuerza, control sobre el trueno y el rayo",
+      "descripcion": "Thor es el dios del trueno, conocido por su martillo mágico, Mjolnir.",
+      "lugar": "Asgard",
+      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/140.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Doctor Strange",
+      "poderes": "Magia",
+      "descripcion": "El Doctor Strange es un maestro de las artes místicas, con el poder de manipular la realidad.",
+      "lugar": "Kamar-Taj",
+      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/55.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Flash",
+      "poderes": "Super velocidad",
+      "descripcion": "Flash puede moverse a velocidades cercanas a la luz, lo que le permite hacer viajes en el tiempo.",
+      "lugar": "Central City",
+      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/891.jpg"
+    },
+    {
+      "id": 308,
+      "name": "Hancock",
+      "poderes": "Fuerza sobrehumana, Invulnerabilidad, Vuelo",
+      "descripcion": "Hancock es un superhéroe con habilidades sobrehumanas, pero su actitud problematica y su falta de disciplina lo han convertido en un héroe controvertido.",
+      "lugar": "Los Ángeles, USA",
+      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/1109.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Aquaman",
+      "poderes": "Fuerza sobrehumana y control del agua",
+      "descripcion": "Aquaman es el rey de la Atlántida y tiene la habilidad de controlar el agua y nadar a grandes profundidades.",
+      "lugar": "Atlántida",
+      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/634.jpg"
     }
+
   ]
 }

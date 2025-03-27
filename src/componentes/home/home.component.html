@@ -28,10 +28,11 @@
       </div>
 
       <div class="barra-busqueda_botones">
-        <button mat-flat-button class="barra-busqueda_botones_boton">
+        <button mat-flat-button class="barra-busqueda_botones_boton" (click)="appCrear.abrirForm()">
           <mat-icon>add</mat-icon>
           Crear nuevo héroe
         </button>
+        <app-crear #appCrear></app-crear> <!--creo referencia al componente para llamar a sus métodos desde el comp.padre -->
       </div>
     </div>
   </section>
@@ -47,7 +48,7 @@
   <div *ngIf="heroesFiltrados.length > 0; else mostrarTodos" class="tarjeta-unica">
     <section class="hero-section">
       <div class="hero-section_grid">
-        <div class="hero-section_grid_items" *ngFor="let heroe of heroesFiltrados">
+        <div class="hero-section_grid_items" *ngFor="let heroe of heroesCargados">
           <mat-card class="hero-section_grid_items_card">
             <img mat-card-image [src]="heroe.imagen" alt="{{ heroe.name }}" class="hero-section_card-img">
             <mat-card-title class="hero-section_grid_items_card_title">{{ heroe.name }}</mat-card-title>
@@ -92,8 +93,8 @@
     </div>
   </ng-template>
 
-  <section class="ver-mas-section">
-    <button mat-flat-button class="ver-mas-section_boton">Ver más</button>
+  <section class="ver-mas-section" *ngIf="heroes > heroesCargados">
+    <button mat-flat-button class="ver-mas-section_boton" (click)="cargarMas()">Ver más</button>
   </section>
   <app-footer></app-footer>
 </body>
