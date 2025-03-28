@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de creación héroe</title>
+</head>
+
+<body>
+  <div class="lightbox" [ngStyle]="{'display': displayStatus}">
+
+    <div class="lightbox_contenido">
+
+      <div class="lightbox_contenido_div-top">
+        <h1 class="lightbox_contenido_div-top_titulo">Crear nuevo héroe</h1>
+        <button class="lightbox_contenido_div-top_boton" (click)="cerrarForm()" mat-icon-button>
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <div class="lightbox_contenido_fila-linea1">
+        <label class="lightbox_contenido_fila-linea1_input-nombre">
+          Nombre <br>
+          <input type="text" placeholder="Nombre" class="lightbox_contenido_fila-linea1_input-nombre_input1">
+        </label>
+        <label class="lightbox_contenido_fila-linea1_input-poder">
+          Superpoder <br>
+          <input type="text" placeholder="Superpoder" class="lightbox_contenido_fila-linea1_input-poder_input2">
+        </label>
+      </div>
+
+      <label class="lightbox_contenido_input-ciudad">
+        Ciudad <br>
+        <input type="text" placeholder="Ciudad" class="lightbox_contenido_input-ciudad_input3">
+      </label>
+      <label class="lightbox_contenido_input-descripcion">
+        Descripción <br>
+        <textarea placeholder="Ingresa una descripción" class="lightbox_contenido_input-descripcion_input4"></textarea>
+      </label>
+
+      <form method="post" action="/send/" enctype="multipart/form-data">
+        Elige una imagen
+        <input mat-flat-button class="lightbox_contenido_boton-img" type="file">Seleccionar archivo
+      </form>
+
+      <div class="lightbox_contenido_fila-linea2">
+        <label class="lightbox_contenido_fila-linea2_label-input5">
+          <input type="checkbox" class="lightbox_contenido_fila-linea2_label-input5_input5">
+          Acepto los <u>Términos y condiciones</u>
+        </label>
+        <button mat-flat-button class="lightbox_contenido_fila-linea2_boton-crear">Crear héroe</button>
+      </div>
+    </div>
+  </div>
+
+  
+</body>
+
+</html>

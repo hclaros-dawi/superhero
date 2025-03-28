@@ -1,0 +1,240 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.header {
+  position: relative;
+  z-index: 2;
+
+  &_img {
+    width: 100%;
+    z-index: -1;
+    position: relative;
+  }
+
+  &_logo {
+    position: absolute;
+    z-index: 1;
+    top: 4.5rem;
+    left: 5.5rem;
+    width: 15.375rem;
+    height: 6.9375rem;
+  }
+
+  &_txt {
+    position: absolute;
+    z-index: 1;
+    color: black;
+    font-weight: bold;
+    font-size: 4rem;
+    line-height: 120%;
+    width: 10.875rem;
+    height: 4.8125rem;
+    left: 78rem;
+    top: 22.75rem;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+}
+
+.barra-busqueda {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.25rem;
+  position: relative;
+
+  &_contenedor {
+    position: relative; //contenedor sobre el que se van a posicionar
+    border-radius: 3.8em;
+    box-shadow: .0rem .15rem .2rem #939191;
+    display: flex;
+    align-items: center;
+    width: 55rem;
+    height: 4.7rem;
+
+    &_input {
+      border: none;
+      outline: none;
+      border-style: none;
+      padding-left: 1.3rem;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 1rem;
+    }
+
+    &_icono {
+      position: absolute; //el que se va a sobreponer
+      background-color: #8A42FB;
+      right: 0.7rem;
+      width: 3.5rem;
+      height: 3.5rem;
+
+      mat-icon {
+        color: #FFFFFF;
+      }
+    }
+
+    &::placeholder {
+      padding: 0.6rem;
+    }
+  }
+
+  &_botones {
+    font-size: 1rem;
+    padding-left: 3rem;
+
+    .barra-busqueda_botones_boton {
+      //porque genera un selector incorrecto porque el & hace referencia a la clase principal y no pasa por botones
+      background-color: #8A42FB;
+      color: white;
+    }
+  }
+}
+
+.heroes_txt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 3rem;
+  width: 100%;
+
+  h2 {
+    font-size: 1.9375rem;
+    font-weight: bold;
+    color: #8A42FB;
+    line-height: 140%;
+    width: 32.9375rem;
+    height: 2.6875rem;
+  }
+
+  p {
+    font-size: 1rem;
+    color: #343434;
+    line-height: 140%;
+    width: 41.25rem;
+    height: 2.75rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+//Para estilizar todos los héroes cuando no se encuentra el filtrado
+.hero-section {
+  &_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 18rem);
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+
+    &_items {
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      box-shadow: .03rem .3rem 1.375rem #d3d3d3;
+
+      &_card {
+        max-height: 100%;
+        border-radius: 0;
+        background-color: #FFFFFF;
+
+        img {
+          height: 21rem;
+        }
+
+        &_title {
+          margin: 1rem;
+          width: 17.875rem;
+          height: 1.75rem;
+          line-height: 140%;
+          font-size: 1.25rem;
+          font-weight: bold;
+        }
+
+        &_subtitle {
+          margin-left: 1rem;
+          width: 15rem;
+          height: 3rem;
+          line-height: 140%;
+          font-size: 1rem;
+          font-weight: bold;
+        }
+
+        &_contenido {
+          &_descripcion {
+            font-size: .875rem;
+            width: 100%;
+            height: 2.5rem;
+            line-height: 140%;
+            margin-top: 0.1rem;
+          }
+
+          &_lugar {
+            font-size: 1rem;
+            width: 19em;
+            height: 1.5rem;
+            line-height: 140%;
+            margin-top: 2.6rem;
+          }
+        }
+      }
+
+      &_actions {
+        display: flex;
+        justify-content: space-around;
+
+        &_editar {
+          width: 7rem;
+        }
+
+        .hero-section_grid_items_actions_editar {
+          //porque & nos lleva al padre y es para coger la ruta de clases específica
+          background-color: #8A42FB;
+        }
+
+        &_eliminar {
+          width: 7rem;
+        }
+
+        .hero-section_grid_items_actions_eliminar {
+          background-color: #F3F3F3;
+          color: #343434;
+        }
+      }
+    }
+  }
+
+  //Para estilizar el heroe filtrado
+  .tarjeta-unica {
+    background-color: #8A42FB;
+    max-width: 20px;
+
+    &_hero-section {
+      padding: 1rem;
+
+      mat-card {
+        width: 10px;
+      }
+    }
+  }
+}
+
+.ver-mas-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2.9rem;
+
+  &_boton {
+    width: 7rem;
+  }
+
+  .ver-mas-section_boton {
+    background-color: #8A42FB;
+  }
+}
