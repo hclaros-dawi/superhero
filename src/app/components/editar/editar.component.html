@@ -4,43 +4,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Formulario de editar héroe</title>
+  <title>Formulario de edición héroe</title>
 </head>
 
 <body>
-  <form id="form-div">
-    <div id="form-titulo">
-      <h1 id="tit-crear">Editar héroe</h1>
-      <button id="btn-cerrar">X</button>
+  <div class="dialog-overlay">
+    <div class="dialog-overlay_dialog-container">
+      <div class="dialog-overlay_dialog-container_div-top">
+        <h2 class="dialog-overlay_dialog-container_div-top_titulo">Editar héroe</h2>
+        <button class="dialog-overlay_dialog-container_div-top_boton" (click)="cerrarDialogo()" mat-icon-button>
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <div class="dialog-overlay_dialog-container_fila1">
+        <div class="dialog-overlay_dialog-container_fila1_campo">
+          <label class="dialog-overlay_dialog-container_fila1_campo_input-label">Nombre</label>
+          <input type="text" [(ngModel)]="heroes.name" class="dialog-overlay_dialog-container_fila1_campo_nombre" placeholder="Nombre" />
+        </div>
+
+        <div class="dialog-overlay_dialog-container_fila1_campo">
+          <label class="dialog-overlay_dialog-container_fila1_campo_input-label">Superpoder</label>
+          <input type="text" [(ngModel)]="heroes.poderes" class="dialog-overlay_dialog-container_fila1_campo_poder" placeholder="Superpoder" />
+        </div>
+      </div>
+
+      <label class="dialog-overlay_dialog-container_input-label">Ciudad</label>
+      <input type="text" [(ngModel)]="heroes.lugar" class="dialog-overlay_dialog-container_lugar" placeholder="Ciudad" />
+
+      <label class="dialog-overlay_dialog-container_input-label">Descripción</label>
+      <textarea [(ngModel)]="heroes.descripcion" class="dialog-overlay_dialog-container_descripcion" placeholder="Ingresa una descripción"></textarea>
+
+      <label class="dialog-overlay_dialog-container_input-label">Elige una imagen</label>
+      <div class="dialog-overlay_dialog-container_file-upload">
+        <button mat-flat-button class="dialog-overlay_dialog-container_file-upload_boton" (click)="seleccionarArchivo()">Seleccionar archivo</button>
+        <span class="dialog-overlay_dialog-container_file-upload_file-name">{{ fileName || 'Sin archivos seleccionados' }}</span>
+      </div>
+      <input id="fileInput" type="file" (change)="onFileSelected($event)" accept="image/*" hidden />
+
+      <div class="dialog-overlay_dialog-container_div-bottom">
+        <label>
+          <input type="checkbox" class="dialog-overlay_dialog-container_div-bottom-terminos"> Acepto los <u>Términos y condiciones</u>
+        </label>
+
+        <div class="dialog-overlay_dialog-container_div-bottom_dialog-actions">
+          <button mat-button class="dialog-overlay_dialog-container_div-bottom_dialog-actions_boton" (click)="guardarDatos()">Actualizar héroe</button>
+        </div>
+      </div>
     </div>
-    <div id="fila-linea1">
-      <label class="input-nombre">
-        Nombre <br>
-        <input type="text" placeholder="Nombre" id="input1">
-      </label>
-      <label class="input-nombre">
-        Superpoder <br>
-        <input type="text" placeholder="Superpoder" id="input2">
-      </label>
-    </div>
-    <label class="input-nombre">
-      Ciudad <br>
-      <input type="text" placeholder="Ciudad" id="input3">
-    </label>
-    <label class="input-nombre">
-      Descripción <br>
-      <textarea placeholder="Ingresa una descripción" id="input4"></textarea>
-    </label>
-    <p id="txt-img">Elige una imagen</p>
-    <button id="btn-archivo">Seleccionar archivo</button>
-    <div id="fila-linea2">
-      <label id="label-input5">
-        <input type="checkbox" id="input5">
-        Acepto los <u>Términos y condiciones</u>
-      </label>
-      <button id="btn-editarform">Guardar cambios</button>
-    </div>
-  </form>
+  </div>
+
 </body>
 
 </html>

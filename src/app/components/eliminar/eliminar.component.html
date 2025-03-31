@@ -8,23 +8,25 @@
 </head>
 
 <body>
-  <div class="mensaje-div">
-    <div class="titulo-div">
-      <p class="tit-eliminar">Eliminar héroe</p>
-      <button class="cerrar">x</button>
-    </div>
-    <div class="advertencia">
-      <img src="icon.svg" alt="icon-advertencia">
-      <div class="adv-txt">
-        <p class="txt1-adv"><b>¿Estás seguro de querer eliminar este héroe?</b></p>
-        <p class="txt2-adv">Una vez eliminado no podrás revertir esta acción.</p>
+  <div class="div-top">
+    <h2 mat-dialog-title class="div-top_tit-eliminar">Eliminar héroe</h2>
+    <mat-icon (click)="cerrarMensaje()">close</mat-icon>
+  </div>
+  <mat-dialog-content class="mensaje-div">
+    <div class="mensaje-div_advertencia">
+      <img src="icon.svg" alt="icon-advertencia" class="mensaje-div_advertencia_imagen">
+      <div class="mensaje-div_advertencia_adv-txt">
+        <p class="mensaje-div_advertencia_adv-txt_txt1-adv"><b>¿Estás seguro de querer eliminar este héroe?</b></p>
+        <p class="mensaje-div_advertencia_adv-txt_txt2-adv">Una vez eliminado no podrás revertir esta acción.</p>
       </div>
     </div>
-    <div class="div-btn">
-      <button class="btn-cancelar">Cancelar</button>
-      <button class="btn-eliminar">Sí, eliminar</button>
-    </div>
-  </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="div-botones">
+    <button mat-flat-button (click)="cerrarMensaje()" class="div-botones_cerrar">Cancelar</button>
+    <button mat-flat-button (click)="eliminarHeroe()" class="div-botones_confirmar">Sí, eliminar</button>
+  </mat-dialog-actions>
+
 </body>
 
 </html>

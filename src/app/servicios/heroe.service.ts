@@ -8,7 +8,7 @@ import { HeroeInterface } from '../interfaces/heroeinterface'; //importo la inte
 })
 export class HeroeService {
   readonly urlData = 'http://localhost:3000/heroes';  //url de api héroes, solo puede ser asignada una vez en la declaración de la propiedad (no cambiará) [private, public, readonly en ts]
-  constructor(readonly http: HttpClient) {} //instanciamos en el contructor httpclient para después usar get
+  constructor(readonly http: HttpClient) { } //instanciamos en el contructor httpclient para después usar get
   //se inyecta instancia de httpclient cuando se crea clase
 
   //Método para buscar los héroes por nombre
@@ -34,4 +34,14 @@ export class HeroeService {
     const urlFiltrada = `${this.urlData}?name=${nombreMayuscula}`; // Usamos 'name_like' para que sea flexible
     return this.http.get<HeroeInterface[]>(urlFiltrada);
   }
+
+  crearHeroe(nuevoHeroe: HeroeInterface): Observable<HeroeInterface> {
+    return this.http.post<HeroeInterface>(this.urlData, nuevoHeroe);
+  }
+
+  actualizarHeroe(heroe: HeroeInterface): Observable<HeroeInterface> {
+    return this.http.put<HeroeInterface>(`${this.urlData}/${heroe.id}`, heroe);
+
+  }
+
 }
