@@ -1,12 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
-import { CommonModule } from '@angular/common'; // Importa CommonModule
+import { ChangeDetectionStrategy, Component, ChangeDetectorRef, EventEmitter, Output } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms'
 import { HeroeInterface } from '../../interfaces/heroeinterface'; //importo la interfaz
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
-import { HeroeService } from '../../servicios/heroe.service'
+import { HeroeService } from '../../servicios/heroe.service';
 
 @Component({
   selector: 'app-crear',
@@ -15,15 +15,12 @@ import { HeroeService } from '../../servicios/heroe.service'
   templateUrl: './crear.component.html',
   styleUrl: './crear.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
-
 })
-export class CrearComponent implements OnInit {
-  @Output() nuevoHeroe = new EventEmitter<HeroeInterface>();
 
-  displayDialog = false;
+export class CrearComponent {
+  @Output() heroeCreado = new EventEmitter<HeroeInterface>();
 
-  heroes: HeroeInterface = {
-    id: 0,
+  heroes: Omit<HeroeInterface, 'id'> = {
     name: '',
     poderes: '',
     lugar: '',
@@ -31,19 +28,7 @@ export class CrearComponent implements OnInit {
     imagen: null
   };
 
-  constructor(private cdRef: ChangeDetectorRef, private heroeService: HeroeService) { }
-
-  ngOnInit(): void { }
-
-  abrirDialogo(): void {
-    this.displayDialog = true;
-    this.cdRef.detectChanges();
-  }
-
-  cerrarDialogo(): void {
-    this.displayDialog = false;
-    this.cdRef.detectChanges();
-  }
+  constructor(private cdRef: ChangeDetectorRef, private heroeService: HeroeService, private dialogRef: MatDialogRef<CrearComponent>) { }
 
   fileName: string = "";
 
@@ -52,14 +37,14 @@ export class CrearComponent implements OnInit {
     fileInput.click();
   }
 
-  onFileSelected(event: any) {
+  manejarArchivo(event: any) {
     const file: File = event.target.files[0];
     if (file) {
       this.fileName = file.name;
 
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.heroes.imagen = e.target.result;  //Convertir imagen a base64
+        this.heroes.imagen = e.target.result;
       };
       reader.readAsDataURL(file);
     } else {
@@ -67,30 +52,19 @@ export class CrearComponent implements OnInit {
     }
   }
 
-  guardarDatos(): void {
-    const nuevoHeroe: HeroeInterface = {
-      id: Math.floor(Math.random() * 1000000),
-      name: this.heroes.name,
-      poderes: this.heroes.poderes,
-      lugar: this.heroes.lugar,
-      descripcion: this.heroes.descripcion,
-      imagen: this.heroes.imagen
-    };
-
-    console.log('Nuevo héroe creado:', nuevoHeroe); // Verifica si el héroe es creado correctamente
-    // Utiliza el servicio para enviar el nuevo héroe al backend
-    this.heroeService.crearHeroe(nuevoHeroe).subscribe(
-      (creado) => {
-        console.log('Héroe creado en el backend:', creado);
-        this.nuevoHeroe.emit(creado);  // Emitir el héroe creado
-        this.cerrarDialogo();
-        this.cdRef.detectChanges();
+  guardarHeroe() {
+    this.heroeService.crearHeroe(this.heroes).subscribe({
+      next: (heroeCreado) => {
+        this.dialogRef.close(heroeCreado);
       },
-      (error) => {
-        console.error('Error al crear héroe:', error);
-       }
-    );
+      error: (err) => console.error('Error al crear héroe:', err)
+    });
   }
+
+  cerrarDialogo() {
+    this.dialogRef.close();
+  }
+
 }
 
 

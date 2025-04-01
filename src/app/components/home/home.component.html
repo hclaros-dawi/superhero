@@ -28,12 +28,10 @@
       </div>
 
       <div class="barra-busqueda_botones">
-        <button mat-flat-button class="barra-busqueda_botones_boton" (click)="appCrear.abrirDialogo()">
+        <button mat-flat-button class="barra-busqueda_botones_boton" (click)="openCrearDialog()">
           <mat-icon>add</mat-icon>
           Crear nuevo héroe
         </button>
-        <app-crear #appCrear (nuevoHeroe)="crearHeroe($event)"></app-crear>
-        <!--creo referencia al componente para llamar a sus métodos desde el comp.padre -->
       </div>
     </div>
   </section>
@@ -59,9 +57,10 @@
               <p class="hero-section_grid_items_card_contenido_lugar">{{ heroe.lugar }}</p>
             </mat-card-content>
             <mat-card-actions class="hero-section_grid_items_actions">
-              <button mat-flat-button (click)="openEditarDialog(heroe)"
-                class="hero-section_grid_rewitems_actions_editar"><mat-icon>edit</mat-icon>Editar</button>
-                <button mat-flat-button class="hero-section_grid_items_actions_eliminar" (click)="openEliminarDialog(heroe)">Eliminar</button>
+              <button mat-flat-button class="hero-section_grid_items_actions_editar"
+                (click)="openEditarDialog(heroe)"><mat-icon>edit</mat-icon>Editar</button>
+              <button mat-flat-button class="hero-section_grid_items_actions_eliminar"
+                (click)="openEliminarDialog(heroe)">Eliminar</button>
             </mat-card-actions>
           </mat-card>
         </div>
@@ -83,9 +82,13 @@
                 <p class="hero-section_grid_items_card_contenido_lugar">{{ heroe.lugar }}</p>
               </mat-card-content>
               <mat-card-actions class="hero-section_grid_items_actions">
-                <button mat-flat-button (click)="openEditarDialog(heroe)"
-                  class="hero-section_grid_items_actions_editar"><mat-icon>edit</mat-icon>Editar</button>
-                  <button mat-flat-button class="hero-section_grid_items_actions_eliminar" (click)="openEliminarDialog(heroe)">Eliminar</button>
+                <button mat-flat-button class="hero-section_grid_items_actions_editar"
+                  (click)="openEditarDialog(heroe)"><mat-icon>edit</mat-icon>Editar
+                </button>
+
+                <button mat-flat-button class="hero-section_grid_items_actions_eliminar"
+                  (click)="openEliminarDialog(heroe)">Eliminar
+                </button>
               </mat-card-actions>
             </mat-card>
           </div>
@@ -94,7 +97,7 @@
     </div>
   </ng-template>
 
-  <section class="ver-mas-section" *ngIf="heroes > heroesCargados">
+  <section class="ver-mas-section" *ngIf="heroes.length > heroesCargados.length">
     <button mat-flat-button class="ver-mas-section_boton" (click)="cargarMas()">Ver más</button>
   </section>
   <app-footer></app-footer>

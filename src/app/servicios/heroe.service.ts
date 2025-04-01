@@ -11,13 +11,6 @@ export class HeroeService {
   constructor(readonly http: HttpClient) { } //instanciamos en el contructor httpclient para después usar get
   //se inyecta instancia de httpclient cuando se crea clase
 
-  //Método para buscar los héroes por nombre
-  //se devuelve un observable que cuando se resuelve, da un array de cualquier tipo
-  // buscarHeroesPorNombre(name: string): Observable<any[]> { //param es el parámetro que se pasa en este caso es de tipo string y devuelve un array de observables de tipo any
-  //   return this.http.get<any[]>('${this.urlData}?name_like=${name}'); //aquí devuelve la url pero específica del héroe que se ha pasado como parámetro
-  //   //this--> heroeservice, al cual se accede a sus propiedades y métodos
-  // }
-
   obtenerHeroes(): Observable<HeroeInterface[]> {
     return this.http.get<HeroeInterface[]>(this.urlData); //Devuelve una lista de héroes
   }
@@ -35,13 +28,15 @@ export class HeroeService {
     return this.http.get<HeroeInterface[]>(urlFiltrada);
   }
 
-  crearHeroe(nuevoHeroe: HeroeInterface): Observable<HeroeInterface> {
-    return this.http.post<HeroeInterface>(this.urlData, nuevoHeroe);
+  crearHeroe(heroe: HeroeInterface): Observable<HeroeInterface> {
+    return this.http.post<HeroeInterface>(this.urlData, heroe);
   }
-
   actualizarHeroe(heroe: HeroeInterface): Observable<HeroeInterface> {
     return this.http.put<HeroeInterface>(`${this.urlData}/${heroe.id}`, heroe);
+  }
 
+  eliminarHeroe(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.urlData}/${id}`);
   }
 
 }

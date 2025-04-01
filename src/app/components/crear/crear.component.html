@@ -8,7 +8,7 @@
 </head>
 
 <body>
-  <div class="dialog-overlay" *ngIf="displayDialog">
+  <div class="dialog-overlay">
 
     <div class="dialog-overlay_dialog-container">
 
@@ -47,7 +47,7 @@
         <span class="dialog-overlay_dialog-container_file-upload_file-name">{{ fileName || "Sin archivos seleccionados"
           }}</span>
       </div>
-      <input id="fileInput" type="file" (change)="onFileSelected($event)" accept="image/*" hidden />
+      <input id="fileInput" type="file" (change)="manejarArchivo($event)" accept="image/*" hidden />
 
       <div class="dialog-overlay_dialog-container_div-bottom">
         <label>
@@ -56,8 +56,8 @@
         </label>
 
         <div class="dialog-overlay_dialog-container_div-bottom_dialog-actions">
-          <button mat-button class="dialog-overlay_dialog-container_div-bottom_dialog-actions_boton"
-            (click)="guardarDatos()">Crear
+          <button mat-button type="button" class="dialog-overlay_dialog-container_div-bottom_dialog-actions_boton"
+            (click)="guardarHeroe()">Crear
             héroe</button>
         </div>
       </div>

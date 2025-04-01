@@ -4,8 +4,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { HeroeInterface } from '../../interfaces/heroeinterface';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog'; // Importar para el control del diálogo
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HeroeService } from '../../servicios/heroe.service';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-editar',
@@ -19,7 +20,7 @@ export class EditarComponent implements OnInit {
   @Output() nuevoHeroe = new EventEmitter<HeroeInterface>();
 
   heroes: HeroeInterface = {
-    id: 0,
+    id: '',
     name: '',
     poderes: '',
     lugar: '',
@@ -34,11 +35,12 @@ export class EditarComponent implements OnInit {
     private heroeService: HeroeService,
     public dialogRef: MatDialogRef<EditarComponent>, // Usamos MatDialogRef para cerrar el diálogo
     @Inject(MAT_DIALOG_DATA) public data: HeroeInterface // Recibir datos del héroe
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (this.data) {
       this.heroes = { ...this.data };  // Cargar los datos del héroe para editar
+      console.log(this.data);
     }
   }
 
@@ -47,7 +49,7 @@ export class EditarComponent implements OnInit {
     fileInput.click();
   }
 
-  onFileSelected(event: any) {
+  manejarArchivo(event: any) {
     const file: File = event.target.files[0];
     if (file) {
       this.fileName = file.name;
@@ -62,10 +64,9 @@ export class EditarComponent implements OnInit {
     }
   }
 
-  // Método para guardar los cambios
-  guardarDatos(): void {
-    const nuevoHeroe: HeroeInterface = {
-      id: this.heroes.id,  // Mantener el ID existente del héroe
+  guardarNuevoHeroe(): void {
+    const heroeActualizado: HeroeInterface = {
+      id: this.heroes.id,
       name: this.heroes.name,
       poderes: this.heroes.poderes,
       lugar: this.heroes.lugar,
@@ -73,23 +74,18 @@ export class EditarComponent implements OnInit {
       imagen: this.heroes.imagen
     };
 
-    console.log('Héroe actualizado:', nuevoHeroe);
-    // Usar el servicio para actualizar el héroe en el backend
-    this.heroeService.crearHeroe(nuevoHeroe).subscribe(
-      (creado) => {
-        console.log('Héroe creado en el backend:', creado);
-        this.nuevoHeroe.emit(creado);  // Emitir el héroe creado
-        this.dialogRef.close(creado);  // Cerrar el diálogo después de guardar los cambios
-        this.cdRef.detectChanges();
+    this.heroeService.actualizarHeroe(heroeActualizado).pipe(
+      take(1)
+    ).subscribe({
+      next: (actualizado) => {
+        this.dialogRef.close(actualizado);
       },
-      (error) => {
-        console.error('Error al crear héroe:', error);
-      }
-    );
+      error: (err) => console.error('Error al actualizar:', err)
+    });
   }
 
-  // Método para cerrar el diálogo
   cerrarDialogo(): void {
-    this.dialogRef.close();  // Cerrar el diálogo usando MatDialogRef
+    this.dialogRef.close();
   }
 }
+

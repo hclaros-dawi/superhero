@@ -192,33 +192,33 @@ body {
           width: 7rem;
         }
 
-        .hero-section_grid_items_actions_editar {
-          //porque & nos lleva al padre y es para coger la ruta de clases específica
-          background-color: #8A42FB;
-        }
-
         &_eliminar {
           width: 7rem;
         }
-
-        .hero-section_grid_items_actions_eliminar {
-          background-color: #F3F3F3;
-          color: #343434;
-        }
       }
+
     }
+  }
+
+  .hero-section_grid_items_actions_editar {
+    background-color: #8A42FB;
+  }
+
+  .hero-section_grid_items_actions_eliminar {
+    background-color: #F3F3F3;
+    color: #343434;
   }
 
   //Para estilizar el heroe filtrado
   .tarjeta-unica {
     background-color: #8A42FB;
-    max-width: 20px;
+    max-width: 1.25rem;
 
     &_hero-section {
       padding: 1rem;
 
       mat-card {
-        width: 10px;
+        width: .625rem;
       }
     }
   }

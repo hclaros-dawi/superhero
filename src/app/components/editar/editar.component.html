@@ -20,35 +20,43 @@
       <div class="dialog-overlay_dialog-container_fila1">
         <div class="dialog-overlay_dialog-container_fila1_campo">
           <label class="dialog-overlay_dialog-container_fila1_campo_input-label">Nombre</label>
-          <input type="text" [(ngModel)]="heroes.name" class="dialog-overlay_dialog-container_fila1_campo_nombre" placeholder="Nombre" />
+          <input type="text" [(ngModel)]="heroes.name" class="dialog-overlay_dialog-container_fila1_campo_nombre"
+            placeholder="Nombre" />
         </div>
 
         <div class="dialog-overlay_dialog-container_fila1_campo">
           <label class="dialog-overlay_dialog-container_fila1_campo_input-label">Superpoder</label>
-          <input type="text" [(ngModel)]="heroes.poderes" class="dialog-overlay_dialog-container_fila1_campo_poder" placeholder="Superpoder" />
+          <input type="text" [(ngModel)]="heroes.poderes" class="dialog-overlay_dialog-container_fila1_campo_poder"
+            placeholder="Superpoder" />
         </div>
       </div>
 
       <label class="dialog-overlay_dialog-container_input-label">Ciudad</label>
-      <input type="text" [(ngModel)]="heroes.lugar" class="dialog-overlay_dialog-container_lugar" placeholder="Ciudad" />
+      <input type="text" [(ngModel)]="heroes.lugar" class="dialog-overlay_dialog-container_lugar"
+        placeholder="Ciudad" />
 
       <label class="dialog-overlay_dialog-container_input-label">Descripción</label>
-      <textarea [(ngModel)]="heroes.descripcion" class="dialog-overlay_dialog-container_descripcion" placeholder="Ingresa una descripción"></textarea>
+      <textarea [(ngModel)]="heroes.descripcion" class="dialog-overlay_dialog-container_descripcion"
+        placeholder="Ingresa una descripción"></textarea>
 
       <label class="dialog-overlay_dialog-container_input-label">Elige una imagen</label>
       <div class="dialog-overlay_dialog-container_file-upload">
-        <button mat-flat-button class="dialog-overlay_dialog-container_file-upload_boton" (click)="seleccionarArchivo()">Seleccionar archivo</button>
-        <span class="dialog-overlay_dialog-container_file-upload_file-name">{{ fileName || 'Sin archivos seleccionados' }}</span>
+        <button mat-flat-button class="dialog-overlay_dialog-container_file-upload_boton"
+          (click)="seleccionarArchivo()">Seleccionar archivo</button>
+        <span class="dialog-overlay_dialog-container_file-upload_file-name">{{ fileName || 'Sin archivos seleccionados'
+          }}</span>
       </div>
-      <input id="fileInput" type="file" (change)="onFileSelected($event)" accept="image/*" hidden />
+      <input id="fileInput" type="file" (change)="manejarArchivo($event)" accept="image/*" hidden />
 
       <div class="dialog-overlay_dialog-container_div-bottom">
         <label>
-          <input type="checkbox" class="dialog-overlay_dialog-container_div-bottom-terminos"> Acepto los <u>Términos y condiciones</u>
+          <input type="checkbox" class="dialog-overlay_dialog-container_div-bottom-terminos"> Acepto los <u>Términos y
+            condiciones</u>
         </label>
 
         <div class="dialog-overlay_dialog-container_div-bottom_dialog-actions">
-          <button mat-button class="dialog-overlay_dialog-container_div-bottom_dialog-actions_boton" (click)="guardarDatos()">Actualizar héroe</button>
+          <button mat-button class="dialog-overlay_dialog-container_div-bottom_dialog-actions_boton"
+            (click)="guardarNuevoHeroe()">Actualizar héroe</button>
         </div>
       </div>
     </div>
