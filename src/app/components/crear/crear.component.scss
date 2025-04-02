@@ -17,7 +17,6 @@
     padding-left: 1.20rem;
     padding-right: 1rem;
     border-radius: .625rem;
-    width: 80vw;
     max-width: 58.5rem;
     height: auto;
     box-shadow: 0 .125rem .625rem rgba(0, 0, 0, 0.2);
@@ -151,8 +150,7 @@
   .dialog-overlay {
 
     &_dialog-container {
-      height: 180vw;
-      padding-bottom: 1rem;
+      padding-bottom: 2rem;
 
       &_div-top {
         padding-bottom: 0.5rem;

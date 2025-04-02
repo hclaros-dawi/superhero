@@ -31,6 +31,18 @@ export class CrearComponent {
   constructor(private cdRef: ChangeDetectorRef, private heroeService: HeroeService, private dialogRef: MatDialogRef<CrearComponent>) { }
 
   fileName: string = "";
+  terminosAceptados: boolean = false;
+
+  get formularioEsValido(): boolean {
+    return (
+      this.heroes.name.trim() !== '' &&
+      this.heroes.poderes.trim() !== '' &&
+      this.heroes.lugar.trim() !== '' &&
+      this.heroes.descripcion.trim() !== '' &&
+      this.heroes.imagen !== null &&
+      this.terminosAceptados
+    );
+  }
 
   seleccionarArchivo() {
     const fileInput = document.getElementById('fileInput') as HTMLInputElement;
@@ -53,6 +65,8 @@ export class CrearComponent {
   }
 
   guardarHeroe() {
+    if (!this.formularioEsValido) return;
+
     this.heroeService.crearHeroe(this.heroes).subscribe({
       next: (heroeCreado) => {
          this.dialogRef.close(heroeCreado);

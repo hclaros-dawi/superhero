@@ -106,19 +106,11 @@
     },
     {
       "id": "14",
-      "name": "Deadpool5",
+      "name": "Deadpool",
       "poderes": "Regeneración celular, habilidades de combate, agilidad, resistencia",
       "lugar": "Varios lugares",
       "descripcion": "Wade Wilson, un ex mercenario con un sentido del humor único, usa su habilidad de regeneración para luchar contra el crimen y su mortalidad.",
       "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/835.jpg"
-    },
-    {
-      "id": "32c8",
-      "name": "564",
-      "poderes": "",
-      "lugar": "",
-      "descripcion": "",
-      "imagen": null
     }
   ]
 }
