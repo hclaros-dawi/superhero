@@ -15,6 +15,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { EditarComponent } from '../editar/editar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { take } from 'rxjs/operators';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 
 @Component({
@@ -31,7 +32,8 @@ import { take } from 'rxjs/operators';
     FooterComponent,
     CrearComponent,
     MatDialogModule,
-    EditarComponent
+    EditarComponent,
+    MatProgressSpinnerModule
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
@@ -46,6 +48,7 @@ export class HomeComponent implements OnInit {
   pagina: number = 0;
   maxPag: number = 8;
   heroesEliminados: number[] = [];
+  loading: boolean = false;
 
 
   constructor(readonly heroeService: HeroeService, readonly cdr: ChangeDetectorRef, private dialog: MatDialog, private snackBar: MatSnackBar) { } //instanciamos el service para usar sus métodos
@@ -55,17 +58,22 @@ export class HomeComponent implements OnInit {
   }
 
   cargarHeroes(): void {
-    this.heroeService.obtenerHeroes().subscribe((data: HeroeInterface[]) => {
-      this.heroes = data;
-
-      this.heroesFiltrados = [...this.heroes];
-
-      //Vacia los héroes cargados y reiniciar la página
-      this.heroesCargados = [];
-      this.pagina = 0;
-
-      // Cargar los primeros héroes
-      this.cargarMas();
+    this.heroeService.obtenerHeroes().subscribe({
+      next: (data: HeroeInterface[]) => {
+        this.heroes = data;
+        this.heroesFiltrados = [...this.heroes];
+        this.heroesCargados = [];
+        this.pagina = 0;
+        this.cargarMas();
+      },
+      error: () => {
+        this.snackBar.open('Ha ocurrido un error', 'Cerrar', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          panelClass: ['error-snackbar']
+        });
+      }
     });
   }
 
@@ -74,6 +82,9 @@ export class HomeComponent implements OnInit {
     if (this.pagina * this.maxPag >= this.heroesFiltrados.length) {
       return;
     }
+
+    this.loading = true; //establece loading cuando empieza carga
+
     //calcular inicio y fin segun pag actual y num max de heroes por página
     const inicio = this.pagina * this.maxPag;
     const final = inicio + this.maxPag;
@@ -82,20 +93,29 @@ export class HomeComponent implements OnInit {
 
     this.heroesCargados = [...this.heroesCargados, ...heroesPorCargar];
 
-    //Incrementa la página para la siguiente carfa
+    // Incrementar la página para la siguiente carga
     this.pagina++;
+
+    // Desactivar el loading después de que se carguen los héroes
+    this.loading = false;
+
+    // Actualizar la vista
     this.cdr.detectChanges();
   }
 
+
   //Llamo al servicio para buscar héroes por nombre
   filtrarPorNombre(heroeBuscado: string) {
+    this.loading = true;  // Activar el loader mientras se filtran los héroes
     this.pagina = 0;
     if (!heroeBuscado.trim()) {
       // Si no se ha escrito nada en el campo de búsqueda, mostramos todos los héroes
       this.heroesFiltrados = this.heroes;
+      this.loading = false;  // Desactivar el loader si no hay filtro
     } else {
       this.heroeService.filtrarPorNombre(heroeBuscado).subscribe((heroes) => {
         this.heroesFiltrados = heroes;
+        this.loading = false;  // Desactivar el loader una vez se obtienen los héroes
       });
     }
 
@@ -108,8 +128,21 @@ export class HomeComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((heroeCreado) => {
       if (heroeCreado) {
+        this.snackBar.open('Héroe creado con éxito', 'Cerrar', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          panelClass: ['exito-snackbar']
+        });
         this.cargarHeroes();
         this.cdr.markForCheck();
+      } else if (heroeCreado === false) {
+        this.snackBar.open('Ha ocurrido un error', 'Cerrar', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          panelClass: ['error-snackbar']
+        });
       }
     });
   }
@@ -130,11 +163,20 @@ export class HomeComponent implements OnInit {
             this.heroesCargados = [...this.heroesCargados.filter(h => h.id !== heroe.id)];
 
             this.cdr.markForCheck();
-            this.snackBar.open('Héroe eliminado', 'Cerrar', { duration: 3000 });
+            this.snackBar.open('Este héroe se ha eliminado', 'Cerrar', {
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+              panelClass: ['exito-snackbar']
+            });
           },
           error: (err) => {
-            console.error('Error al eliminar:', err);
-            this.snackBar.open('Error al eliminar héroe', 'Cerrar', { duration: 3000 });
+            this.snackBar.open('Ha ocurrido un error', 'Cerrar', {
+              duration: 3000,
+              horizontalPosition: 'center',
+              verticalPosition: 'top',
+              panelClass: ['error-snackbar']
+            });
           }
         });
       }
@@ -153,8 +195,21 @@ export class HomeComponent implements OnInit {
         this.heroes = this.heroes.map(h => h.id === updatedHeroe.id ? updatedHeroe : h);
         this.heroesFiltrados = this.heroesFiltrados.map(h => h.id === updatedHeroe.id ? updatedHeroe : h);
         this.heroesCargados = this.heroesCargados.map(h => h.id === updatedHeroe.id ? updatedHeroe : h);
+        this.cdr.markForCheck();
 
-        this.cdr.markForCheck();  
+        this.snackBar.open('Héroe modificado con éxito', 'Cerrar', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          panelClass: ['exito-snackbar']
+        });
+      } else {
+        this.snackBar.open('Ha ocurrido un error', 'Cerrar', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          panelClass: ['error-snackbar']
+        });
       }
     });
   }

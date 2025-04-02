@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
   <!-- Carga la fuente de iconos de Google -->
   <title>Home</title>
 </head>
@@ -59,12 +59,18 @@
             <mat-card-actions class="hero-section_grid_items_actions">
               <button mat-flat-button class="hero-section_grid_items_actions_editar"
                 (click)="openEditarDialog(heroe)"><mat-icon>edit</mat-icon>Editar</button>
+
               <button mat-flat-button class="hero-section_grid_items_actions_eliminar"
                 (click)="openEliminarDialog(heroe)">Eliminar</button>
             </mat-card-actions>
           </mat-card>
         </div>
       </div>
+      <!-- Loader: Se mostrará cuando loading sea true -->
+      <div [ngClass]="{ 'show': loading }" class="tarjeta-unica_hero-section_loader">
+        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+       </div>
+
     </section>
   </div>
 
@@ -85,7 +91,6 @@
                 <button mat-flat-button class="hero-section_grid_items_actions_editar"
                   (click)="openEditarDialog(heroe)"><mat-icon>edit</mat-icon>Editar
                 </button>
-
                 <button mat-flat-button class="hero-section_grid_items_actions_eliminar"
                   (click)="openEliminarDialog(heroe)">Eliminar
                 </button>
@@ -93,6 +98,10 @@
             </mat-card>
           </div>
         </div>
+        <!-- Loader: Se mostrará cuando loading sea true -->
+        <div [ngClass]="{ 'show': loading }" class="hero-section_loader">
+          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+         </div>
       </section>
     </div>
   </ng-template>

@@ -20,7 +20,7 @@ import { HeroeService } from '../../servicios/heroe.service';
 export class CrearComponent {
   @Output() heroeCreado = new EventEmitter<HeroeInterface>();
 
-  heroes: Omit<HeroeInterface, 'id'> = {
+   heroes: Omit<HeroeInterface, 'id'> = {
     name: '',
     poderes: '',
     lugar: '',
@@ -55,9 +55,11 @@ export class CrearComponent {
   guardarHeroe() {
     this.heroeService.crearHeroe(this.heroes).subscribe({
       next: (heroeCreado) => {
-        this.dialogRef.close(heroeCreado);
+         this.dialogRef.close(heroeCreado);
       },
-      error: (err) => console.error('Error al crear héroe:', err)
+      error: (err) => {
+         console.error('Error al crear héroe:', err);
+      }
     });
   }
 

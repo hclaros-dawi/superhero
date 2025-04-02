@@ -1,3 +1,26 @@
+html,
+body {
+  height: 100%;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-mdc-snack-bar-container.exito-snackbar {
+  --mat-snack-bar-button-color: #000000;
+  --mdc-snackbar-container-color: #29F4B0;
+  --mat-snack-bar-container-width: '4rem';
+  --mdc-snackbar-supporting-text-color: #000000;
+  --mat-mdc-snack-bar-label-width: 'auto';
+ }
+
+.mat-mdc-snack-bar-container.error-snackbar {
+  --mat-snack-bar-button-color: #000000;
+  --mdc-snackbar-container-color: #FB6A6A;
+  --mat-snack-bar-container-width: '4rem';
+   --mdc-snackbar-supporting-text-color: #000000;
+  --mat-mdc-snack-bar-label-width: 'auto';
+ }
+

@@ -17,7 +17,8 @@
     padding-left: 1.20rem;
     padding-right: 1rem;
     border-radius: .625rem;
-    width: 58.5rem;
+    width: 80vw;
+    max-width: 58.5rem;
     height: auto;
     box-shadow: 0 .125rem .625rem rgba(0, 0, 0, 0.2);
 
@@ -135,10 +136,100 @@
         &_boton {
           background-color: #E7D8FE;
           color: #343434;
+
+          .mat-mdc-unelevated-button .mdc-button__label {
+            font-size: 1px;
+          }
         }
       }
     }
 
   }
+}
 
+@media screen and (max-width: 768px) {
+  .dialog-overlay {
+
+    &_dialog-container {
+      height: 180vw;
+      padding-bottom: 1rem;
+
+      &_div-top {
+        padding-bottom: 0.5rem;
+
+        .dialog-overlay_dialog-container_div-top_titulo {
+          letter-spacing: 0;
+        }
+      }
+
+      &_fila1 {
+        display: flex;
+        flex-direction: column;
+
+        &_campo {
+          &_nombre {
+            width: 19rem;
+            height: 2rem;
+          }
+
+          &_poder {
+            width: 19rem;
+            height: 2rem;
+          }
+        }
+      }
+
+      &_lugar {
+        width: 19rem;
+        height: 2rem;
+      }
+
+      &_descripcion,
+      textarea {
+        width: 19rem;
+        height: 4.6rem;
+      }
+
+      &_file-upload {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: flex-start;
+
+        &_boton {
+          width: 12rem;
+          height: 3rem;
+          font-size: 1rem;
+          font-weight: 400 !important;
+          line-height: 120%;
+          letter-spacing: 0;
+        }
+      }
+
+      &_div-bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: flex-start;
+        padding-top: 1rem;
+        width: 16.5rem;
+        height: 6.375rem;
+
+        &_terminos {
+          font-weight: lighter;
+        }
+
+        &_dialog-actions {
+          &_boton {
+            width: 7.625rem;
+            height: 3rem;
+            font-size: 1rem;
+            font-weight: 400 !important;
+            line-height: 120%;
+            letter-spacing: 0;
+          }
+        }
+      }
+    }
+  }
 }
