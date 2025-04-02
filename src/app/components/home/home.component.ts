@@ -42,7 +42,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 export class HomeComponent implements OnInit {
 
   heroes: HeroeInterface[] = []; //Define la propiedad de héroes como array de HeroeInterface
-  heroesFiltrados: HeroeInterface[] = [];  // Por defecto muestra todos los héroes
+  heroesFiltrados: HeroeInterface[] = [];  //Por defecto muestra todos los héroes
   heroeBuscado: string = '';
   heroesCargados: HeroeInterface[] = [];
   pagina: number = 0;
@@ -78,7 +78,7 @@ export class HomeComponent implements OnInit {
   }
 
   cargarMas(): void {
-    // Si no hay héroes para cargar, no hacemos nada
+    //Si no hay héroes para cargar, no hacemos nada
     if (this.pagina * this.maxPag >= this.heroesFiltrados.length) {
       return;
     }
@@ -93,25 +93,23 @@ export class HomeComponent implements OnInit {
 
     this.heroesCargados = [...this.heroesCargados, ...heroesPorCargar];
 
-    // Incrementar la página para la siguiente carga
+    //Incrementar la página para la siguiente carga
     this.pagina++;
 
-    // Desactivar el loading después de que se carguen los héroes
+    //Desactivar el loading después de que se carguen los héroes
     this.loading = false;
 
-    // Actualizar la vista
     this.cdr.detectChanges();
   }
 
 
-  //Llamo al servicio para buscar héroes por nombre
-  filtrarPorNombre(heroeBuscado: string) {
+   filtrarPorNombre(heroeBuscado: string) {
     this.loading = true;  // Activar el loader mientras se filtran los héroes
     this.pagina = 0;
     if (!heroeBuscado.trim()) {
       // Si no se ha escrito nada en el campo de búsqueda, mostramos todos los héroes
       this.heroesFiltrados = this.heroes;
-      this.loading = false;  // Desactivar el loader si no hay filtro
+      this.loading = false;
     } else {
       this.heroeService.filtrarPorNombre(heroeBuscado).subscribe((heroes) => {
         this.heroesFiltrados = heroes;
@@ -191,8 +189,7 @@ export class HomeComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((updatedHeroe) => {
       if (updatedHeroe && updatedHeroe.id) {
-        // 🔥 Encuentra el héroe y actualízalo directamente en la lista
-        this.heroes = this.heroes.map(h => h.id === updatedHeroe.id ? updatedHeroe : h);
+         this.heroes = this.heroes.map(h => h.id === updatedHeroe.id ? updatedHeroe : h);
         this.heroesFiltrados = this.heroesFiltrados.map(h => h.id === updatedHeroe.id ? updatedHeroe : h);
         this.heroesCargados = this.heroesCargados.map(h => h.id === updatedHeroe.id ? updatedHeroe : h);
         this.cdr.markForCheck();
@@ -203,8 +200,8 @@ export class HomeComponent implements OnInit {
           verticalPosition: 'top',
           panelClass: ['exito-snackbar']
         });
-      } else {
-        this.snackBar.open('Ha ocurrido un error', 'Cerrar', {
+      } else if (updatedHeroe === false) {
+         this.snackBar.open('Error al actualizar héroe', 'Cerrar', {
           duration: 3000,
           horizontalPosition: 'center',
           verticalPosition: 'top',
