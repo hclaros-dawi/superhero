@@ -4,19 +4,20 @@
 
 .div-top {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; //espaciado máximo entre los elementos
   align-items: center;
   margin: .625rem;
 
   &_tit-eliminar {
     margin: 0;
     text-align: center;
-    flex-grow: 1;
+    flex-grow: 1; //título ocupe el espacio disponible
     font-size: 1.2em;
     padding: 0;
   }
 }
 
+//contenedor del mensaje de advertencia
 .mensaje-div {
   &_advertencia {
     display: flex;
@@ -26,22 +27,22 @@
 
     &_imagen {
       margin: 0.6em;
-      width: 5%;
+      width: 5%; //ocupará el 5% del ancho del contenedor
     }
 
     &_adv-txt {
       margin: 0;
-      width: 95%;
+      width: 95%; //ocupe el 95% restante del contenedor
 
       &_txt1-adv {
-        font-size: 1.2em;
+        font-size: 1.2rem;
         margin-bottom: 0;
       }
 
       &_txt2-adv {
-        font-size: 1em;
+        font-size: 1rem;
         margin-top: 0;
-        padding-top: 0.2em;
+        padding-top: 0.2rem;
       }
     }
   }

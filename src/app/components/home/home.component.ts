@@ -181,7 +181,7 @@ export class HomeComponent implements OnInit {
   openEditarDialog(heroe: HeroeInterface): void {
     const dialogRef = this.dialog.open(EditarComponent, {
       width: '43.9375rem',
-      data: { ...heroe },
+      data: { ...heroe }, //le pasa los datos de los heroes para que pueda editarlos (MAT_DIALOG_DATA)
     });
 
     dialogRef.afterClosed().subscribe((updatedHeroe) => {

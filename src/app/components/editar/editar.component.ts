@@ -16,6 +16,7 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./editar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+
 export class EditarComponent implements OnInit { //necesita onInit porque necesita cargar datos previos del héroe para editarlo
 
   heroes: HeroeInterface = {
@@ -33,7 +34,7 @@ export class EditarComponent implements OnInit { //necesita onInit porque necesi
 
   ngOnInit(): void {
     if (this.data) {
-      this.heroes = { ...this.data };  //carga los datos del héroe para editar
+      this.heroes = { ...this.data }; //carga los datos del héroe para editar
      }
   }
 
