@@ -1,3 +1,7 @@
+@import '../../styles/base/variables';
+@import '../../styles/base/mixins';
+@import '../../styles/base/typography';
+
 .footer-section {
   text-align: left;
   width: 77.1875rem;
@@ -17,22 +21,21 @@
   }
 }
 
-  @media screen and (max-width: 768px) {
-    .footer-section {
-      display: flex;
+@media screen and (max-width: 768px) {
+  .footer-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+
+    &_contenido {
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 100%;
-      height: auto;
-
-      &_contenido {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 1.8rem;
-        margin-bottom: 4rem;
-      }
+      margin-top: 1.8rem;
+      margin-bottom: 4rem;
     }
   }
-
+}

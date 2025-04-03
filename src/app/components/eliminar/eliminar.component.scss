@@ -1,3 +1,7 @@
+@import '../../styles/base/variables';
+@import '../../styles/base/mixins';
+@import '../../styles/base/typography';
+
 .div-top {
   display: flex;
   justify-content: space-between;
@@ -8,7 +12,6 @@
     margin: 0;
     text-align: center;
     flex-grow: 1;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-size: 1.2em;
     padding: 0;
   }
@@ -31,13 +34,11 @@
       width: 95%;
 
       &_txt1-adv {
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-size: 1.2em;
         margin-bottom: 0;
       }
 
       &_txt2-adv {
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-size: 1em;
         margin-top: 0;
         padding-top: 0.2em;
@@ -48,11 +49,11 @@
 
 .div-botones {
   &_cerrar {
-    background-color: #F3F3F3;
-    color: #343434;
+    background-color: $color-light;
+    color: $color-secondary;
   }
 
   &_confirmar {
-    background-color: #8A42FB;
+    background-color: $color-primary;
   }
 }

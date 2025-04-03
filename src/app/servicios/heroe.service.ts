@@ -28,9 +28,10 @@ export class HeroeService {
     return this.http.get<HeroeInterface[]>(urlFiltrada);
   }
 
-  crearHeroe(heroe: HeroeInterface): Observable<HeroeInterface> {
+  crearHeroe(heroe: HeroeInterface): Observable<HeroeInterface> { //recibe la información sobre el héroe a crear
     return this.http.post<HeroeInterface>(this.urlData, heroe);
   }
+
   actualizarHeroe(heroe: HeroeInterface): Observable<HeroeInterface> {
     return this.http.put<HeroeInterface>(`${this.urlData}/${heroe.id}`, heroe);
   }

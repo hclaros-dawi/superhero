@@ -1,0 +1,227 @@
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $color-background;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  &_dialog-container {
+    background: white;
+    padding-bottom: 3rem;
+    padding-top: 0.1rem;
+    padding-left: 1.20rem;
+    padding-right: 1rem;
+    border-radius: .625rem;
+    height: auto;
+    box-shadow: 0 .125rem .625rem $color-shadow;
+
+    &_div-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin: 0;
+      padding-top: 1.2rem;
+      padding-bottom: 1.2rem;
+
+      &_titulo {
+        //all: unset; //Reinicia todos los estilos heredados
+        margin: 0;
+        text-align: center;
+        flex-grow: 1;
+      }
+
+      .dialog-overlay_dialog-container_div-top_titulo {
+        font-size: 1.25rem;
+        font-weight: $font-weight-semi-bold;
+        color: #333;
+        margin: 0;
+        line-height: $line-height-120;
+      }
+    }
+
+    &_input-label {
+      display: block;
+      font-size: 1rem;
+      margin-top: 0.7rem;
+    }
+
+    &_fila1 {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      gap: 1rem;
+
+      &_campo {
+        display: flex;
+        flex-direction: column;
+
+        &_input-label {
+          font-size: 1rem;
+        }
+
+        &_nombre,
+        &_poder {
+          background-color: $color-input;
+          border: .0938rem;
+          @include border-radius(.5rem);
+          padding: .75rem;
+          width: 27.1rem;
+         }
+      }
+    }
+
+    &_lugar {
+      background-color: $color-input;
+      border: .0938rem;
+      @include border-radius(.5rem);
+      padding: .75rem;
+      margin-top: 0.1rem;
+      width: 56.7rem;
+      }
+
+    &_descripcion,
+    textarea {
+      background-color: $color-input;
+      border: .0938rem;
+      @include border-radius(.5rem);
+      padding: .75rem;
+      width: 56.7rem;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 1rem;
+     }
+
+    &_file-upload {
+      display: flex;
+      align-items: center;
+      gap: .625rem;
+      margin-top: .625rem;
+
+      &_boton {
+        background-color: $color-boton-sec !important;
+        color: $color-secondary;
+        font-size: 1rem;
+      }
+
+      &_file-name {
+        font-size: .875rem;
+        color: $color-secondary !important;
+      }
+    }
+
+    &_div-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.125rem;
+      width: 100%;
+      padding-top: 2.5em;
+
+      &_dialog-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: .625rem;
+
+        &_boton {
+          background-color: $color-boton-sec;
+          color: $color-secondary;
+
+          .mat-mdc-unelevated-button .mdc-button__label {
+            font-size: .0625rem;
+          }
+        }
+      }
+    }
+
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dialog-overlay {
+
+    &_dialog-container {
+      padding-bottom: 2rem;
+
+      &_div-top {
+        padding-bottom: 0.5rem;
+
+        .dialog-overlay_dialog-container_div-top_titulo {
+          letter-spacing: 0;
+        }
+      }
+
+      &_fila1 {
+        display: flex;
+        flex-direction: column;
+
+        &_campo {
+          &_nombre {
+            width: 19rem;
+            height: 2rem;
+          }
+
+          &_poder {
+            width: 19rem;
+            height: 2rem;
+          }
+        }
+      }
+
+      &_lugar {
+        width: 19rem;
+        height: 2rem;
+      }
+
+      &_descripcion,
+      textarea {
+        width: 19rem;
+        height: 4.6rem;
+      }
+
+      &_file-upload {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: flex-start;
+
+        &_boton {
+          width: 12rem;
+          height: 3rem;
+          font-size: 1rem;
+          font-weight: $font-weight-normal !important;
+          line-height: $line-height-120;
+          letter-spacing: 0;
+        }
+      }
+
+      &_div-bottom {
+        display: flex;
+        flex-direction: column;
+        justify-content: left;
+        align-items: flex-start;
+        padding-top: 1rem;
+        width: 16.5rem;
+        height: 6.375rem;
+
+        &_terminos {
+          font-weight: $font-weight-lighter;
+        }
+
+        &_dialog-actions {
+          &_boton {
+            width: 7.625rem;
+            height: 3rem;
+            font-size: 1rem;
+            font-weight: $font-weight-normal !important;
+            line-height: $line-height-120;
+            letter-spacing: 0;
+          }
+        }
+      }
+    }
+  }
+}

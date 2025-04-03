@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, ChangeDetectorRef, EventEmitter, Output, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ChangeDetectorRef, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -16,8 +16,7 @@ import { take } from 'rxjs/operators';
   styleUrls: ['./editar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EditarComponent implements OnInit {
-  @Output() nuevoHeroe = new EventEmitter<HeroeInterface>();
+export class EditarComponent implements OnInit { //necesita onInit porque necesita cargar datos previos del héroe para editarlo
 
   heroes: HeroeInterface = {
     id: '',
@@ -30,18 +29,12 @@ export class EditarComponent implements OnInit {
 
   fileName: string = "";
 
-  constructor(
-    private cdRef: ChangeDetectorRef,
-    private heroeService: HeroeService,
-    public dialogRef: MatDialogRef<EditarComponent>, // Usamos MatDialogRef para cerrar el diálogo
-    @Inject(MAT_DIALOG_DATA) public data: HeroeInterface // Recibir datos del héroe
-  ) { }
+  constructor(private cdRef: ChangeDetectorRef, private heroeService: HeroeService, public dialogRef: MatDialogRef<EditarComponent>, @Inject(MAT_DIALOG_DATA) public data: HeroeInterface) { }
 
   ngOnInit(): void {
     if (this.data) {
-      this.heroes = { ...this.data };  // Cargar los datos del héroe para editar
-      console.log(this.data);
-    }
+      this.heroes = { ...this.data };  //carga los datos del héroe para editar
+     }
   }
 
   seleccionarArchivo() {
@@ -56,7 +49,7 @@ export class EditarComponent implements OnInit {
 
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.heroes.imagen = e.target.result;  // Convertir imagen a base64
+        this.heroes.imagen = e.target.result; //convertir imagen a base64
       };
       reader.readAsDataURL(file);
     } else {

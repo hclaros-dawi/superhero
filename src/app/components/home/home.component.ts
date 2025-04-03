@@ -54,7 +54,12 @@ export class HomeComponent implements OnInit {
   constructor(readonly heroeService: HeroeService, readonly cdr: ChangeDetectorRef, private dialog: MatDialog, private snackBar: MatSnackBar) { } //instanciamos el service para usar sus métodos
 
   ngOnInit(): void {
-    this.cargarHeroes();
+
+    this.loading = true; //establece loading cuando empieza carga
+    setTimeout(() => {
+      this.cargarHeroes();
+      this.loading = false;
+    }, 1200)
   }
 
   cargarHeroes(): void {
@@ -83,8 +88,6 @@ export class HomeComponent implements OnInit {
       return;
     }
 
-    this.loading = true; //establece loading cuando empieza carga
-
     //calcular inicio y fin segun pag actual y num max de heroes por página
     const inicio = this.pagina * this.maxPag;
     const final = inicio + this.maxPag;
@@ -96,24 +99,18 @@ export class HomeComponent implements OnInit {
     //Incrementar la página para la siguiente carga
     this.pagina++;
 
-    //Desactivar el loading después de que se carguen los héroes
-    this.loading = false;
-
     this.cdr.detectChanges();
   }
 
 
    filtrarPorNombre(heroeBuscado: string) {
-    this.loading = true;  // Activar el loader mientras se filtran los héroes
     this.pagina = 0;
     if (!heroeBuscado.trim()) {
       // Si no se ha escrito nada en el campo de búsqueda, mostramos todos los héroes
       this.heroesFiltrados = this.heroes;
-      this.loading = false;
     } else {
       this.heroeService.filtrarPorNombre(heroeBuscado).subscribe((heroes) => {
         this.heroesFiltrados = heroes;
-        this.loading = false;  // Desactivar el loader una vez se obtienen los héroes
       });
     }
 
@@ -152,7 +149,7 @@ export class HomeComponent implements OnInit {
       }
     });
 
-    dialogRef.afterClosed().pipe(take(1)).subscribe((confirmed) => {
+    dialogRef.afterClosed().pipe(take(1)).subscribe((confirmed) => { //escucha cierre de dialogo en componente hijp
       if (confirmed && heroe.id) {
         this.heroeService.eliminarHeroe(heroe.id).subscribe({
           next: () => {

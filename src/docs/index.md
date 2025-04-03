@@ -13,6 +13,7 @@
 | json-server      | 0.17.4     |
 
 2. Instalación y Configuración
+
 - **Clonación del repositorio**: 
 Usa git clone https://github.com/hclaros-dawi/superhero.git para obtener el proyecto
 

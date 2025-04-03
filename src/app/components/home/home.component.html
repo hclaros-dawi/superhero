@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="UTF-8">
@@ -24,7 +24,7 @@
           <mat-icon>search</mat-icon>
         </button>
       </div>
- 
+
       <div class="barra-busqueda_botones">
         <button mat-flat-button class="barra-busqueda_botones_boton" (click)="openCrearDialog()">
           <mat-icon>add</mat-icon>
@@ -42,41 +42,15 @@
     </div>
   </section>
 
-  <div *ngIf="heroesFiltrados.length > 0; else mostrarTodos" class="tarjeta-unica">
-    <section class="hero-section">
-      <div class="hero-section_grid">
-        <div class="hero-section_grid_items" *ngFor="let heroe of heroesCargados">
-          <mat-card class="hero-section_grid_items_card">
-            <img mat-card-image [src]="heroe.imagen" alt="{{ heroe.name }}" class="hero-section_card-img">
-            <mat-card-title class="hero-section_grid_items_card_title">{{ heroe.name }}</mat-card-title>
-            <mat-card-subtitle class="hero-section_grid_items_card_subtitle">{{ heroe.poderes }}</mat-card-subtitle>
-            <mat-card-content class="hero-section_grid_items_card_contenido">
-              <p class="hero-section_grid_items_card_contenido_descripcion">{{ heroe.descripcion }}</p>
-              <p class="hero-section_grid_items_card_contenido_lugar">{{ heroe.lugar }}</p>
-            </mat-card-content>
-            <mat-card-actions class="hero-section_grid_items_actions">
-              <button mat-flat-button class="hero-section_grid_items_actions_editar"
-                (click)="openEditarDialog(heroe)"><mat-icon>edit</mat-icon>Editar</button>
-
-              <button mat-flat-button class="hero-section_grid_items_actions_eliminar"
-                (click)="openEliminarDialog(heroe)">Eliminar</button>
-            </mat-card-actions>
-          </mat-card>
-        </div>
-      </div>
-      <!-- Loader: Se mostrará cuando loading sea true -->
-      <div [ngClass]="{ 'show': loading }" class="tarjeta-unica_hero-section_loader">
-        <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-       </div>
-
-    </section>
+  <div class="loader" *ngIf="loading">
+    <mat-spinner mode="indeterminate" diameter="50"></mat-spinner>
   </div>
 
-  <ng-template #mostrarTodos>
-    <div *ngIf="heroesFiltrados.length === 0">
+  <div *ngIf="!loading">
+    <div *ngIf="heroesFiltrados.length > 0; else mostrarTodos" class="tarjeta-unica">
       <section class="hero-section">
         <div class="hero-section_grid">
-          <div [id]="'heroe-' + heroe.id" class="hero-section_grid_items" *ngFor="let heroe of heroes">
+          <div class="hero-section_grid_items" *ngFor="let heroe of heroesCargados">
             <mat-card class="hero-section_grid_items_card">
               <img mat-card-image [src]="heroe.imagen" alt="{{ heroe.name }}" class="hero-section_card-img">
               <mat-card-title class="hero-section_grid_items_card_title">{{ heroe.name }}</mat-card-title>
@@ -87,27 +61,54 @@
               </mat-card-content>
               <mat-card-actions class="hero-section_grid_items_actions">
                 <button mat-flat-button class="hero-section_grid_items_actions_editar"
-                  (click)="openEditarDialog(heroe)"><mat-icon>edit</mat-icon>Editar
-                </button>
+                  (click)="openEditarDialog(heroe)"><mat-icon>edit</mat-icon>Editar</button>
+
                 <button mat-flat-button class="hero-section_grid_items_actions_eliminar"
-                  (click)="openEliminarDialog(heroe)">Eliminar
-                </button>
+                  (click)="openEliminarDialog(heroe)">Eliminar</button>
               </mat-card-actions>
             </mat-card>
           </div>
         </div>
-        <!-- Loader: Se mostrará cuando loading sea true -->
-        <div [ngClass]="{ 'show': loading }" class="hero-section_loader">
-          <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
-         </div>
-      </section>
+       </section>
+      </div>
     </div>
-  </ng-template>
 
-  <section class="ver-mas-section" *ngIf="heroes.length > heroesCargados.length">
-    <button mat-flat-button class="ver-mas-section_boton" (click)="cargarMas()">Ver más</button>
-  </section>
-  <app-footer></app-footer>
+    <ng-template #mostrarTodos>
+      <div *ngIf="heroesFiltrados.length === 0">
+        <section class="hero-section">
+          <div class="hero-section_grid">
+            <div [id]="'heroe-' + heroe.id" class="hero-section_grid_items" *ngFor="let heroe of heroes">
+              <mat-card class="hero-section_grid_items_card">
+                <img mat-card-image [src]="heroe.imagen" alt="{{ heroe.name }}" class="hero-section_card-img">
+                <mat-card-title class="hero-section_grid_items_card_title">{{ heroe.name }}</mat-card-title>
+                <mat-card-subtitle class="hero-section_grid_items_card_subtitle">{{ heroe.poderes }}</mat-card-subtitle>
+                <mat-card-content class="hero-section_grid_items_card_contenido">
+                  <p class="hero-section_grid_items_card_contenido_descripcion">{{ heroe.descripcion }}</p>
+                  <p class="hero-section_grid_items_card_contenido_lugar">{{ heroe.lugar }}</p>
+                </mat-card-content>
+                <mat-card-actions class="hero-section_grid_items_actions">
+                  <button mat-flat-button class="hero-section_grid_items_actions_editar"
+                    (click)="openEditarDialog(heroe)"><mat-icon>edit</mat-icon>Editar
+                  </button>
+                  <button mat-flat-button class="hero-section_grid_items_actions_eliminar"
+                    (click)="openEliminarDialog(heroe)">Eliminar
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </div>
+          <!-- Loader: Se mostrará cuando loading sea true -->
+          <div [ngClass]="{ 'show': loading }" class="hero-section_loader">
+            <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+          </div>
+        </section>
+      </div>
+    </ng-template>
+
+    <section class="ver-mas-section" *ngIf="heroes.length > heroesCargados.length">
+      <button mat-flat-button class="ver-mas-section_boton" (click)="cargarMas()">Ver más</button>
+    </section>
+    <app-footer></app-footer>
 </body>
 
 </html>
