@@ -1,6 +1,6 @@
-#Proyecto de superhéroes - Angular
+# Proyecto de superhéroes - Angular
 
-1. Requisitos Técnicos
+## 1. Requisitos Técnicos
 
 | Tecnología       | Versión    |
 |------------------|------------|
@@ -14,21 +14,34 @@
 
 2. Instalación y Configuración
 
-- **Clonación del repositorio**: 
-Usa git clone https://github.com/hclaros-dawi/superhero.git para obtener el proyecto
+### - **Clonación del repositorio** 
+Ejecuta el siguiente comando en la terminal para clonar el proyecto:  
+```sh
+git clone https://github.com/hclaros-dawi/superhero.git
+```
 
-- **Instalación de dependencias**: Navega al directorio del proyecto e instala todas las dependencias necesarias
-
+### - **Instalación de dependencias** 
+Navega al directorio del proyecto e instala todas las dependencias necesarias
+```sh
 cd superhero
 npm install
+```
 
-3. Ejecución (En Windows)
+## 3. Ejecución (Windows)
 
-Servidor de desarrollo Angular: Inicia ng serve en una terminal. Accede a http://localhost:4200 en tu navegador
+### Servidor de desarrollo Angular
+Ejecuta el siguiente comando y accede a la aplicación en el navegador (http://localhost:4200):
+```sh
+ng serve
+```
 
-Servidor Mock (json-server): Paralelamente, ejecuta npx json-server --watch db.json --port 3000 en otra terminal para levantar el servidor Mock en http://localhost:3000
+### Servidor Mock (json-server)
+Para levantar el servidor JSON de pruebas (http://localhost:3000), ejecuta en otra terminal:
+```sh
+npx json-server --watch db.json --port 3000
+```
 
-4. Endpoints de prueba
+## 4. Endpoints de prueba
 
 - [http://localhost:4200](http://localhost:4200) - Aplicación principal  
 
@@ -36,7 +49,7 @@ Servidor Mock (json-server): Paralelamente, ejecuta npx json-server --watch db.j
 
 - [http://localhost:3000/heroes/1](http://localhost:3000/heroes/1) - Detalle de un héroe específico 
 
-5. Estructura del proyecto
+## 5. Estructura del proyecto
 
 ```bash
 src/
