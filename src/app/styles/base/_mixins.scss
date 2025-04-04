@@ -1,3 +1,5 @@
+//mixin para aplicar border-radius de manera reutilizable en cualquier elemento
+
 @mixin border-radius($radius) {
   border-radius: $radius;
 }

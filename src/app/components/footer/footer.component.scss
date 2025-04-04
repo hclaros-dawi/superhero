@@ -6,10 +6,10 @@
   text-align: left;
   width: 77.1875rem;
   height: 4rem;
-  border-color: #343434;
+  border-color: $color-secondary;
   display: flex;
   align-items: center;
-  margin: auto;
+  margin: auto; //centra la sección horizontalmente dentro de su contenedor
   margin-top: 2rem;
   border-top: 0.1rem solid #0000001A;
   padding-top: 2rem;

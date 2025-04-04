@@ -20,7 +20,7 @@ import { take } from 'rxjs/operators';
 export class EditarComponent implements OnInit { //necesita onInit porque necesita cargar datos previos del héroe para editarlo
 
   heroes: HeroeInterface = {
-    id: '',
+    id: '', //no se omite ya que es el identificador del héroe a editar (ya creado por defecto)
     name: '',
     poderes: '',
     lugar: '',
@@ -33,9 +33,10 @@ export class EditarComponent implements OnInit { //necesita onInit porque necesi
   constructor(private cdRef: ChangeDetectorRef, private heroeService: HeroeService, public dialogRef: MatDialogRef<EditarComponent>, @Inject(MAT_DIALOG_DATA) public data: HeroeInterface) { }
 
   ngOnInit(): void {
-    if (this.data) {
-      this.heroes = { ...this.data }; //carga los datos del héroe para editar
-     }
+    if (this.data) { //si hay datos previos del héroe para cargar
+      //con spread operator, copiamos objeto data a heroes, inicializamos héroes
+      this.heroes = { ...this.data }; //carga los datos del héroe para editar con mat dialog data
+    }
   }
 
   seleccionarArchivo() {
@@ -59,6 +60,7 @@ export class EditarComponent implements OnInit { //necesita onInit porque necesi
   }
 
   guardarNuevoHeroe(): void {
+    //crea objeto heroeActualizado de tipo HeroInterface que contiene datos inicializados (que se han copiado de data)
     const heroeActualizado: HeroeInterface = {
       id: this.heroes.id,
       name: this.heroes.name,
@@ -68,11 +70,13 @@ export class EditarComponent implements OnInit { //necesita onInit porque necesi
       imagen: this.heroes.imagen
     };
 
+    //pipe es para encadenar operadorea a observable, manipularlos antes de que se suscriban
+    //se suscribe al observable de función servicio hace petición a backend (le envía heroesActualizados)
     this.heroeService.actualizarHeroe(heroeActualizado).pipe(
-      take(1)
+      take(1) //solo recibie una respuesta (prescindible)
     ).subscribe({
-      next: (actualizado) => {
-        this.dialogRef.close(actualizado);
+      next: (actualizado) => { //si suscripción exitosa, back le devuelve respuesta (actualizado)
+        this.dialogRef.close(actualizado); //next se ejecuta, cierra diálogo y envía actualizado a componente que abre diálogo (home)
       },
       error: (err) => console.error('Error al actualizar:', err)
     });

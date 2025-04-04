@@ -68,9 +68,9 @@ export class CrearComponent { //no necesita onInit porque parte de un objeto vac
   guardarHeroe() {
     if (!this.formularioEsValido) return; //si es falso, acaba y no se ejecuta lo de a continuación
 
-    this.heroeService.crearHeroe(this.heroes).subscribe({ //se suscribe al observable de función servicio hace petición a backend (le envía heroes)
+    this.heroeService.crearHeroe(this.heroes).subscribe({ //se suscribe al observable de función servicio hace petición a backend (le envía heroes creado)
       next: (heroeCreado) => { //si suscripción exitosa, back le devuelve respuesta (heroeCreado)
-        this.dialogRef.close(heroeCreado); //next se ejecuta, cierra diálogo y envía heroCreado a componente que abre diálogo
+        this.dialogRef.close(heroeCreado); //next se ejecuta, cierra diálogo y envía heroCreado a componente que abre diálogo (home)
       },
       error: (err) => {
         console.error('Error al crear héroe:', err);

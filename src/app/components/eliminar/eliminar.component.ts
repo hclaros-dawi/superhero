@@ -11,16 +11,20 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
   templateUrl: './eliminar.component.html',
   styleUrl: './eliminar.component.scss'
 })
-export class EliminarComponent {
-  constructor(
-    public dialogRef: MatDialogRef<EliminarComponent>,
-  ) { }
 
+export class EliminarComponent { //no onInit porque no carga dato, solo muestra mensaje
+  constructor(public dialogRef: MatDialogRef<EliminarComponent>) { } //con MatDialogRef, abro, cierro, paso datos sin inyectar MAT_DIALOG_DATA
+
+  //lo gestiona el boolean confirmed (home)
+  //si usuario confirma eliminación
   eliminarHeroe(): void {
+    //cierra dialog y envia T al componente que lo abrió (home)--> confirmed == true, elimina
     this.dialogRef.close(true);
   }
 
+  //si usuario cancela eliminación
   cerrarMensaje(): void {
-    this.dialogRef.close(false); //oculta la ventana sin eliminar
+    //cierra dialog y envia F al componente que lo abrió (home)--> confirmed == false, solo cierra dialog
+    this.dialogRef.close(false);
   }
 }

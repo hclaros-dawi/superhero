@@ -8,15 +8,14 @@
 }
 
 body {
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden;
-  /*evita desbordamiento horizontal*/
+  width: 100%; //establece el ancho del cuerpo de la página al 100% del viewport
+  max-width: 100vw; //limita el ancho máximo al ancho del viewport, evitando que se desborde
+  overflow-x: hidden; //evita desbordamiento horizontal
 }
 
 .header {
-  position: relative;
-  z-index: 2;
+  position: relative; //establece la posición relativa para posicionar los elementos dentro del header de forma absoluta
+  z-index: 2; //que esté por encima de otros elementos con menor índice
   width: 100%;
   height: auto;
 
@@ -24,13 +23,13 @@ body {
     width: 100%;
     height: auto;
     max-height: 30rem;
-    z-index: -1;
+    z-index: -1; //coloca la imagen detrás de otros elementos con un índice más alto
     position: relative;
   }
 
   &_logo {
     position: absolute;
-    z-index: 1000;
+    z-index: 1000; //tiene un índice alto, asegurando que esté por encima de otros elementos
     top: 4.5rem;
     left: 5.5rem;
     width: 15.375rem;
@@ -69,7 +68,7 @@ body {
 
     &_input {
       border: none;
-      outline: none;
+      outline: none; //elimina el borde de enfoque predeterminado
       border-style: none;
       padding-left: 1.3rem;
       font-size: 1rem;
@@ -126,7 +125,7 @@ body {
 
   p {
     font-size: 1rem;
-    color: #343434;
+    color: $color-secondary;
     line-height: $line-height-120;
     width: 41.25rem;
     height: 2.75rem;
@@ -145,11 +144,11 @@ body {
 .hero-section {
   &_grid {
     display: grid;
-    grid-template-columns: repeat(4, 18rem);
-    gap: 1.5rem;
+    grid-template-columns: repeat(4, 18rem); //define 4 columnas de 18rem de ancho cada una
+    gap: 1.5rem; //define el espacio entre los elementos del grid
     justify-content: center;
     align-items: center;
-    margin: auto;
+    margin: auto; //centra la cuadrícula dentro de su contenedor
 
     &_items {
       box-shadow: .03rem .3rem 1.375rem #d3d3d3;
@@ -207,7 +206,7 @@ body {
 
       &_actions {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-around; //distribuye ambos botones de manera equidistante
         margin-top: 0.3rem;
 
         &_editar {
@@ -269,7 +268,7 @@ body {
   .header {
     &_img {
       width: 100%;
-      object-fit: cover;
+      object-fit: cover; //imagen cubre el área, manteniendo su relación de aspecto y recortando lo necesario
       height: 25rem;
     }
 
