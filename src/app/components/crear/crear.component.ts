@@ -51,7 +51,7 @@ export class CrearComponent { //no necesita onInit porque parte de un objeto vac
   }
 
   manejarArchivo(event: any) { //el event es la información del archivo seleccionado que se pasa después recibe en la vista para el nombre
-    const file: File = event.target.files[0]; //declara archivo tipo File y asigna elemento que desencadena evento, primera posición
+    const file: File = event.target.files[0]; //declara archivo tipo File y asigna elemento que desencadena evento, que tiene propiedad files (todos archivos seleccionados)
     if (file) {
       this.fileName = file.name;
 

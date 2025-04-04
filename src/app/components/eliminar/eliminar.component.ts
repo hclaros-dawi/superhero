@@ -12,7 +12,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
   styleUrl: './eliminar.component.scss'
 })
 
-export class EliminarComponent { //no onInit porque no carga dato, solo muestra mensaje
+export class EliminarComponent { //no onInit porque no carga datos, solo muestra mensaje
   constructor(public dialogRef: MatDialogRef<EliminarComponent>) { } //con MatDialogRef, abro, cierro, paso datos sin inyectar MAT_DIALOG_DATA
 
   //lo gestiona el boolean confirmed (home)

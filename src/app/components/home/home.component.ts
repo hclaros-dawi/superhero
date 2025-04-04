@@ -37,7 +37,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 })
 export class HomeComponent implements OnInit { //inicialización de datos de proyecto en general
 
-  heroes: HeroeInterface[] = [];  //define heroes como un array de tipo 'HeroeInterface', almacenará héroes obtenidos desde el servicio
+  heroes: HeroeInterface[] = [];  //define heroes como un array de tipo HeroeInterface que almacenará héroes obtenidos desde el servicio
   heroesFiltrados: HeroeInterface[] = [];  //define array para almacenar héroes filtrados
   heroeBuscado: string = '';
   heroesCargados: HeroeInterface[] = [];

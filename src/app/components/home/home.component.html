@@ -49,7 +49,6 @@
 
   <!-- Primero, verifica si loading es false y si lo es analiza segunda condición-->
   <div *ngIf="!loading">
-
     <!-- Sección donde se muestran los héroes filtrados si cumple condición y sino muestra todos-->
     <div *ngIf="heroesFiltrados.length > 0; else mostrarTodos" class="tarjeta-unica">
       <section class="hero-section">

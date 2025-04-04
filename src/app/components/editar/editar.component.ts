@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { HeroeInterface } from '../../interfaces/heroeinterface';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { HeroeService } from '../../servicios/heroe.service';
-import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-editar',
@@ -70,11 +69,8 @@ export class EditarComponent implements OnInit { //necesita onInit porque necesi
       imagen: this.heroes.imagen
     };
 
-    //pipe es para encadenar operadorea a observable, manipularlos antes de que se suscriban
     //se suscribe al observable de función servicio hace petición a backend (le envía heroesActualizados)
-    this.heroeService.actualizarHeroe(heroeActualizado).pipe(
-      take(1) //solo recibie una respuesta (prescindible)
-    ).subscribe({
+    this.heroeService.actualizarHeroe(heroeActualizado).subscribe({
       next: (actualizado) => { //si suscripción exitosa, back le devuelve respuesta (actualizado)
         this.dialogRef.close(actualizado); //next se ejecuta, cierra diálogo y envía actualizado a componente que abre diálogo (home)
       },
