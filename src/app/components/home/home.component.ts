@@ -37,12 +37,12 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 })
 export class HomeComponent implements OnInit { //inicialización de datos de proyecto en general
 
-  heroes: HeroeInterface[] = [];  //define heroes como un array de tipo HeroeInterface que almacenará héroes obtenidos desde el servicio
-  heroesFiltrados: HeroeInterface[] = [];  //define array para almacenar héroes filtrados
+  heroes: HeroeInterface[] = []; //define heroes como un array de tipo HeroeInterface que almacenará héroes obtenidos desde el servicio
+  heroesFiltrados: HeroeInterface[] = []; //define array para almacenar héroes filtrados
   heroeBuscado: string = '';
   heroesCargados: HeroeInterface[] = [];
-  pagina: number = 0;  //indica la página actual
-  maxPag: number = 8;  //número máximo de héroes que se cargarán por cada página
+  pagina: number = 0; //indica la página actual
+  maxPag: number = 8; //número máximo de héroes que se cargarán por cada página
   heroesEliminados: number[] = [];
   loading: boolean = false;  //indicador de carga. Se establece en 'true' cuando los héroes están siendo cargados y se muestra un spinner de carga
 
@@ -79,7 +79,7 @@ export class HomeComponent implements OnInit { //inicialización de datos de pro
   cargarMas(): void {
     //si no hay héroes para cargar, no hacemos nada
     if (this.pagina * this.maxPag >= this.heroesFiltrados.length) {
-      // si el número de héroes que hemos cargado ya es igual o mayor que el número total de héroes filtrados, no hacemos nada
+      //si el número de héroes que hemos cargado ya es igual o mayor que el número total de héroes filtrados, no hacemos nada
       return;
     }
 
@@ -104,7 +104,7 @@ export class HomeComponent implements OnInit { //inicialización de datos de pro
       //si no se ha escrito nada en el campo de búsqueda, mostramos todos los héroes
       this.heroesFiltrados = this.heroes; //asigna todos los heroes a heroesFiltrados
     } else {
-      this.heroeService.filtrarPorNombre(heroeBuscado).subscribe((heroes) => {
+      this.heroeService.filtrarPorNombre(heroeBuscado).subscribe((heroes) => { //se suscribe al observable de función servicio hace petición a backend (le envía heroes)
         this.heroesFiltrados = heroes; //la respuesta del back la asignamos a heroesFiltrados
       });
     }
