@@ -9,7 +9,7 @@
         <div class="hero-section__grid-item" *ngFor="let hero of loadedHeroes">
           <mat-card class="hero-section__grid-item__card">
             <img mat-card-image [src]="hero.image" alt="{{ hero.name }}" class="hero-section__grid-item__card-img">
-            <mat-card-title class="hero-section__grid-item__card-title">{{ hero.name }}</mat-card-title>
+            <mat-card-title class="hero-section__grid-item__card-title">{{ hero.name | capitalize}}</mat-card-title>
             <mat-card-subtitle class="hero-section__grid-item__card-subtitle">{{ hero.powers }}</mat-card-subtitle>
             <mat-card-content class="hero-section__grid-item__card-content">
               <p class="hero-section__grid-item__card-content__description">{{ hero.description }}</p>
@@ -39,7 +39,7 @@
         <div class="hero-section__grid-item" *ngFor="let hero of heroes">
           <mat-card class="hero-section__grid-item__card">
             <img mat-card-image [src]="hero.image" alt="{{ hero.name }}" class="hero-section__grid-item__card-img">
-            <mat-card-title class="hero-section__grid-item__card-title">{{ hero.name }}</mat-card-title>
+            <mat-card-title class="hero-section__grid-item__card-title">{{ hero.name | capitalize }}</mat-card-title>
             <mat-card-subtitle class="hero-section__grid-item__card-subtitle">{{ hero.powers }}</mat-card-subtitle>
             <mat-card-content class="hero-section__grid-item__card-content">
               <p class="hero-section__grid-item__card-content__description">{{ hero.description }}</p>

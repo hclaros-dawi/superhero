@@ -1,3 +1,245 @@
-@import '../../styles/base/variables';
-@import '../../styles/base/typography';
-@import '../../styles/base/dialog';
+@use '../../styles/variables' as var;
+@use '../../styles/typography' as ty;
+
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: map-get(var.$colors, background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+
+  &__container {
+    background: white;
+    padding: 0.1rem 1rem 3rem 1.2rem;
+    border-radius: .625rem;
+    height: auto;
+    box-shadow: 0 .125rem .625rem map-get(var.$colors, shadow);
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 0;
+
+    .dialog__title {
+      margin: 0;
+      text-align: center;
+      flex-grow: 1;
+      font-size: 1.25rem;
+      color: #333;
+      @include ty.font-style('semi-bold', '120');
+    }
+  }
+
+  &__label {
+    display: block;
+    font-size: 1rem;
+    margin-top: 0.7rem;
+  }
+
+  &__row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+
+    .dialog__field {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__input {
+    background-color: map-get(var.$colors, input);
+    border: .0938rem solid transparent;
+    border-radius: .5rem;
+    padding: .75rem;
+
+    &--name,
+    &--power {
+      width: 27.1rem;
+    }
+
+    &--city {
+      margin-top: 0.1rem;
+      width: 56.7rem;
+    }
+  }
+
+  &__textarea {
+    background-color: map-get(var.$colors, input);
+    border: .0938rem solid transparent;
+    border-radius: .5rem;
+    padding: .75rem;
+    width: 56.7rem;
+    font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+  }
+
+  &__file-upload {
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    margin-top: .625rem;
+
+    .dialog__file-button {
+      background-color: map-get(var.$colors, button-secondary);
+      color: map-get(var.$colors, secondary);
+      font-size: 1rem;
+    }
+
+    .dialog__file-name {
+      font-size: .875rem;
+      color: map-get(var.$colors, secondary);
+    }
+  }
+
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.125rem;
+    padding-top: 2.5rem;
+
+    .dialog__actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: .625rem;
+
+      .dialog__save-button {
+        background-color: map-get(var.$colors, button-secondary);
+        color: map-get(var.$colors, secondary);
+
+        .mat-mdc-unelevated-button .mdc-button__label {
+          font-size: .0625rem;
+        }
+      }
+    }
+  }
+
+  &__checkbox {
+    font-weight: map-get(ty.$font-weights, lighter);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .dialog {
+
+    &__container {
+      padding-bottom: 2rem;
+    }
+
+    &__header {
+      padding-bottom: 0.5rem;
+
+      .dialog__title {
+        letter-spacing: 0;
+      }
+    }
+
+    &__row {
+      flex-direction: column;
+
+      .dialog__input--name,
+      .dialog__input--power {
+        width: 19rem;
+        height: 2rem;
+      }
+    }
+
+    &__input--city {
+      width: 19rem;
+      height: 2rem;
+    }
+
+    &__textarea {
+      width: 19rem;
+      height: 4.6rem;
+    }
+
+    &__file-upload {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .dialog__file-button {
+        width: 12rem;
+        height: 3rem;
+        font-size: 1rem;
+        line-height: map-get(ty.$line-heights, 120);
+        letter-spacing: 0;
+      }
+    }
+
+    &__footer {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 1rem;
+      width: 16.5rem;
+      height: 6.375rem;
+
+      .dialog__save-button {
+        width: 7.625rem;
+        height: 3rem;
+        font-size: 1rem;
+        line-height: map-get(ty.$line-heights, 120);
+        letter-spacing: 0;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 975px) {
+  .dialog {
+    &__container {
+      width: 90%;
+      padding: 1rem;
+    }
+
+    &__row {
+      flex-direction: column;
+
+      .dialog__input--name,
+      .dialog__input--power {
+        width: 24rem;
+        height: 2.5rem;
+      }
+    }
+
+    &__input--city {
+      width: 24rem;
+      height: 2.5rem;
+    }
+
+    &__textarea {
+      width: 24rem;
+      height: 5rem;
+    }
+
+    &__file-upload {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .dialog__file-button {
+        width: 10rem;
+        height: 2.5rem;
+        font-size: 1rem;
+      }
+    }
+
+    &__footer {
+      flex-direction: column;
+      align-items: flex-start;
+      padding-top: 1rem;
+
+      .dialog__save-button {
+        width: 8rem;
+        height: 2.5rem;
+        font-size: 1rem;
+      }
+    }
+  }
+}

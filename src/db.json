@@ -10,22 +10,22 @@
       "termsAccepted": true
     },
     {
+      "id": "2",
       "name": "Hulk",
       "powers": "Fuerza ilimitada, resistencia sobrehumana, regeneración acelerada, invulnerabilidad",
       "location": "New Mexico",
       "description": "Científico brillante transformado en un ser colosal de fuerza imparable tras un accidente con radiación gamma.",
       "image": "https://www.superherodb.com/pictures2/portraits/10/100/83.jpg",
-      "termsAccepted": true,
-      "id": "2"
+      "termsAccepted": true
     },
     {
+      "id": "3",
       "name": "Captain Marvel",
       "powers": "Vuelo, fuerza sobrehumana, energía cósmica, absorción y proyección de energía",
       "location": "Avengers Mansion",
       "description": "Piloto y exagente de inteligencia fusionada con ADN Kree, obteniendo poderes cósmicos que la convierten en una de las heroínas más poderosas del universo.",
       "image": "https://www.superherodb.com/pictures2/portraits/10/100/103.jpg",
-      "termsAccepted": true,
-      "id": "3"
+      "termsAccepted": true
     },
     {
       "id": "4",
@@ -91,13 +91,13 @@
       "termsAccepted": true
     },
     {
+      "id": "11",
       "name": "Aquaman3",
       "powers": "Control de agua, superfuerza, telepatía marina, resistencia al agua",
       "location": "Atlántida",
       "description": "Arthur Curry, el rey de Atlántida, posee habilidades tanto acuáticas como terrestres y lucha para proteger tanto la Tierra como los océanos.",
       "image": "https://www.superherodb.com/pictures2/portraits/10/100/634.jpg",
-      "termsAccepted": true,
-      "id": "11"
+      "termsAccepted": true
     },
     {
       "id": "12",
@@ -109,13 +109,13 @@
       "termsAccepted": true
     },
     {
+      "id": "13",
       "name": "Black Panther",
       "powers": "Superfuerza, agilidad, sentidos mejorados, habilidades de combate",
       "location": "Wakanda",
       "description": "T'Challa, el rey de Wakanda, utiliza la hierba en forma de planta para obtener habilidades mejoradas y lucha contra el crimen como Black Panther.",
       "image": "https://www.superherodb.com/pictures2/portraits/10/100/247.jpg",
-      "termsAccepted": true,
-      "id": "13"
+      "termsAccepted": true
     }
   ]
 }

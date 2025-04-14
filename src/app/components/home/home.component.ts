@@ -9,13 +9,12 @@ import { MatCardModule } from '@angular/material/card';
 import { FooterComponent } from '../footer/footer.component';
 import { CreateEditComponent } from "../create-edit/create-edit.component";
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HeaderComponent } from "../header/header.component";
 import { SearchBarComponent } from '../search-bar/search-bar.component';
 import { DeleteComponent } from '../delete/delete.component';
 import { GridHeroesComponent } from '../grid-heroes/grid-heroes.component';
-import { delay } from 'rxjs/operators';
+import { delay, switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -48,7 +47,6 @@ export class HomeComponent implements OnInit {
 
   private readonly heroService = inject(HeroeService);
   private readonly dialog = inject(MatDialog);
-  private readonly snackBar = inject(MatSnackBar);
 
   ngOnInit(): void {
     this.loadHeroes();
@@ -85,12 +83,7 @@ export class HomeComponent implements OnInit {
           this.loading = false;
         },
         error: () => {
-          this.snackBar.open('Ha ocurrido un error', 'Cerrar', {
-            duration: 3000,
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
-            panelClass: ['error-snackbar']
-          });
+          this.heroService.showError('Ha ocurrido un error');
           this.loading = false;
         }
       });
@@ -103,36 +96,32 @@ export class HomeComponent implements OnInit {
     this.loadMore();
   }
 
+
   openDeleteDialog(hero: HeroeInterface): void {
     const dialogRef = this.dialog.open(DeleteComponent);
 
-    dialogRef.afterClosed().subscribe((confirmed) => {
-      if (confirmed && hero.id) {
-        this.heroService.deleteHero(hero.id).subscribe({
-          next: () => {
-            this.heroes = this.heroes.filter(h => h.id !== hero.id);
-            this.filteredHeroes = this.filteredHeroes.filter(h => h.id !== hero.id);
-            this.loadedHeroes = this.loadedHeroes.filter(h => h.id !== hero.id);
+    dialogRef.afterClosed().pipe(
+      switchMap((confirmed) => {
+        if (confirmed && hero.id) {
+          return this.heroService.deleteHero(hero.id);
+        } else {
+          return [];
+        }
+      })
+    ).subscribe({
+      next: () => {
+        this.heroes = this.heroes.filter(h => h.id !== hero.id);
+        this.filteredHeroes = this.filteredHeroes.filter(h => h.id !== hero.id);
+        this.loadedHeroes = this.loadedHeroes.filter(h => h.id !== hero.id);
 
-            this.snackBar.open('Este héroe se ha eliminado', 'Cerrar', {
-              duration: 3000,
-              horizontalPosition: 'center',
-              verticalPosition: 'top',
-              panelClass: ['exito-snackbar']
-            });
-          },
-          error: () => {
-            this.snackBar.open('Ha ocurrido un error', 'Cerrar', {
-              duration: 3000,
-              horizontalPosition: 'center',
-              verticalPosition: 'top',
-              panelClass: ['error-snackbar']
-            });
-          }
-        });
+        this.heroService.showSuccess('Este héroe se ha eliminado');
+      },
+      error: () => {
+        this.heroService.showError('Ha ocurrido un error');
       }
     });
   }
+
 
   openCreateEditDialog(hero?: HeroeInterface): void {
     const dialogRef = this.dialog.open(CreateEditComponent, {
@@ -146,12 +135,8 @@ export class HomeComponent implements OnInit {
           this.filteredHeroes = this.filteredHeroes.map(h => h.id === createdOrUpdatedHero.id ? createdOrUpdatedHero : h);
           this.loadedHeroes = this.loadedHeroes.map(h => h.id === createdOrUpdatedHero.id ? createdOrUpdatedHero : h);
 
-          this.snackBar.open('Héroe modificado con éxito', 'Cerrar', {
-            duration: 3000,
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
-            panelClass: ['exito-snackbar']
-          });
+          this.heroService.showSuccess('Héroe modificado con éxito');
+
         } else {
           if (!this.heroes.some(h => h.id === createdOrUpdatedHero.id)) {
             this.heroes = [...this.heroes, createdOrUpdatedHero];
@@ -163,20 +148,10 @@ export class HomeComponent implements OnInit {
             this.loadedHeroes.push(createdOrUpdatedHero);
           }
 
-          this.snackBar.open('Héroe creado con éxito', 'Cerrar', {
-            duration: 3000,
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
-            panelClass: ['exito-snackbar']
-          });
+          this.heroService.showSuccess('Héroe creado con éxito');
         }
       } else if (createdOrUpdatedHero === false) {
-        this.snackBar.open('Error al crear/actualizar héroe', 'Cerrar', {
-          duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
-          panelClass: ['error-snackbar']
-        });
+        this.heroService.showError('Ha ocurrido un error');
       }
     });
   }

@@ -1,7 +1,3 @@
-@import 'app/styles/base/variables';
-@import 'app/styles/base/typography';
-@import 'app/styles/base/dialog';
-
 html,
 body {
   font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -54,7 +50,7 @@ body {
 
 .search-icon {
   color: #ffffff;
-  background-color: $color-primary;
+  background-color: #8A42FB;
   border-radius: 2.5rem;
   padding: 1.5rem;
   gap: .5rem;

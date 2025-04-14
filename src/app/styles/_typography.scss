@@ -1,0 +1,18 @@
+$font-weights: (
+  thin: 200,
+  light: 300,
+  normal: 400,
+  semi-bold: 600,
+  bold: 700,
+  lighter: lighter
+);
+
+$line-heights: (
+  120: 1.2,
+  140: 1.4
+);
+
+@mixin font-style($weight, $line-height) {
+  font-weight: map-get($font-weights, $weight);
+  line-height: map-get($line-heights, $line-height);
+}

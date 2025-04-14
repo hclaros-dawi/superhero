@@ -11,7 +11,7 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angula
 @Component({
   selector: 'app-create-edit',
   standalone: true,
-  imports:[
+  imports: [
     CommonModule,
     MatButtonModule,
     MatIconModule,
@@ -21,7 +21,6 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angula
   ],
   templateUrl: './create-edit.component.html',
   styleUrl: './create-edit.component.scss',
-
 })
 
 export class CreateEditComponent implements OnInit {
@@ -76,13 +75,22 @@ export class CreateEditComponent implements OnInit {
     fileInput.click();
   }
 
-  handleFile(event: any) {
-    const file: File = event.target.files[0];
+  handleFile(event: Event) {
+    const input = event.target as HTMLInputElement;
+    const file = input?.files?.[0];
+
     if (file) {
       this.fileName = file.name;
       const reader = new FileReader();
-      reader.onload = (e: any) => {
-        this.heroForm.patchValue({ image: e.target.result });
+
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        const result = e.target?.result;
+
+        if (typeof result === 'string') {
+          this.heroForm.patchValue({ image: result });
+        } else {
+          this.heroeService.showError('Ha ocurrido un error');
+        }
       };
       reader.readAsDataURL(file);
     } else {

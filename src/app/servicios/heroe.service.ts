@@ -1,7 +1,8 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { HeroeInterface } from '../interfaces/heroeinterface';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -10,22 +11,15 @@ import { HeroeInterface } from '../interfaces/heroeinterface';
 export class HeroeService {
   readonly urlData = 'http://localhost:3000/heroes';
   private readonly http = inject(HttpClient);
+  private readonly snackBar = inject(MatSnackBar)
 
   getHeroes(): Observable<HeroeInterface[]> {
     return this.http.get<HeroeInterface[]>(this.urlData);
   }
 
-  capitalizeName(name: string): string {
-    return name
-      .split(' ')
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-      .join(' ');
-  }
-
   filterByName(heroName: string): Observable<HeroeInterface[]> {
-    const capitalizedName = this.capitalizeName(heroName.trim());
-    const filteredUrl = `${this.urlData}?name=${capitalizedName}`;
-    return this.http.get<HeroeInterface[]>(filteredUrl);
+    const params = new HttpParams().set('name', heroName);
+    return this.http.get<HeroeInterface[]>(this.urlData, { params });
   }
 
   createHero(hero: HeroeInterface): Observable<HeroeInterface> {
@@ -38,5 +32,24 @@ export class HeroeService {
 
   deleteHero(id: string): Observable<void> {
     return this.http.delete<void>(`${this.urlData}/${id}`);
+  }
+
+  showSuccess(message: string): void {
+    this.snackBar.open(message, 'Cerrar', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: ['exito-snackbar']
+    });
+  }
+
+
+  showError(message: string): void {
+    this.snackBar.open(message, 'Cerrar', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      panelClass: ['error-snackbar']
+    });
   }
 }

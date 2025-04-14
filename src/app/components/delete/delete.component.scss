@@ -1,5 +1,5 @@
-@import '../../styles/base/variables';
-@import '../../styles/base/typography';
+@use '../../styles/variables' as var;
+@use '../../styles/typography' as ty;
 
 .dialog-header {
   display: flex;
@@ -48,11 +48,11 @@
 
 .dialog-actions {
   &__cancel {
-    background-color: $color-light;
-    color: $color-secondary;
+    background-color: map-get(var.$colors, light);
+    color: map-get(var.$colors, secondary);
   }
 
   &__confirm {
-    background-color: $color-primary;
+    background-color: map-get(var.$colors, primary);
   }
 }

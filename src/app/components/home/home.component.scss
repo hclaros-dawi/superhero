@@ -1,5 +1,5 @@
-@import '../../styles/base/variables';
-@import '../../styles/base/typography';
+@use '../../styles/variables' as var;
+@use '../../styles/typography' as ty;
 
 .home {
   display: flex;
@@ -19,18 +19,17 @@
 
     h2 {
       font-size: 1.9375rem;
-      color: $color-primary;
-      line-height: $line-height-120;
+      color: map-get(var.$colors, primary);
+      @include ty.font-style('normal', 120);
       width: 100%;
-      font-weight: $font-weight-normal;
       letter-spacing: 0;
       text-align: center;
     }
 
     p {
       font-size: 1rem;
-      color: $color-secondary;
-      line-height: $line-height-120;
+      color: map-get(var.$colors, secondary);
+      line-height: map-get(ty.$line-heights, 120);
       width: 100%;
       padding-bottom: 1.5rem;
       letter-spacing: 0;

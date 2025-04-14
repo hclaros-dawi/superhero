@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { HeroeInterface } from '../../interfaces/heroeinterface';
+import { CapitalizePipe } from '../../pipes/capitalize.pipe';
 
 @Component({
   selector: 'app-grid-heroes',
@@ -14,7 +15,8 @@ import { HeroeInterface } from '../../interfaces/heroeinterface';
     MatCardModule,
     MatIconModule,
     MatButtonModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    CapitalizePipe
   ],
   templateUrl: './grid-heroes.component.html',
   styleUrl: './grid-heroes.component.scss'
