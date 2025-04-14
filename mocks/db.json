@@ -46,13 +46,13 @@
       "termsAccepted": true
     },
     {
-      "id": "6",
       "name": "Batman",
       "powers": "Entrenamiento físico extremo, combate cuerpo a cuerpo, inteligencia avanzada, recursos ilimitados",
       "location": "Gotham City",
       "description": "Bruce Wayne, huérfano a una edad temprana, juró vengar la muerte de sus padres luchando contra el crimen como el Caballero Oscuro.",
       "image": "https://www.superherodb.com/pictures2/portraits/10/100/639.jpg",
-      "termsAccepted": true
+      "termsAccepted": true,
+      "id": "6"
     },
     {
       "id": "7",

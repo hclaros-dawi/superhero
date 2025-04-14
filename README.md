@@ -26,7 +26,7 @@ ng serve
 ### Mock Server (json-server)
 To start the mock JSON server (http://localhost:3000), run it in another terminal:
 ```sh
-npx json-server --watch db.json --port 3000
+npx json-server --watch mocks/db.json --port 3000
 ```
 
 3. Test Endpoints
