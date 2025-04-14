@@ -1,0 +1,21 @@
+<section>
+  <div class="search-bar">
+    <div class="search-bar__container">
+      <form [formGroup]="searchForm" (ngSubmit)="filterHeroByName()">
+        <label for="heroInput"></label>
+        <input id="heroInput" formControlName="heroeInput" type="text" placeholder="Busca un héroe"
+          class="search-bar__input" matInput autocomplete="off">
+        <button mat-icon-button class="search-bar__button" type="submit">
+          <mat-icon class="search-icon">search</mat-icon>
+        </button>
+      </form>
+    </div>
+
+    <div class="search-bar__add-heroe">
+      <button mat-flat-button class="search-bar__button-add" (click)="onCreateButtonClick()">
+        <mat-icon>add</mat-icon>
+        Crear nuevo héroe
+      </button>
+    </div>
+  </div>
+</section>

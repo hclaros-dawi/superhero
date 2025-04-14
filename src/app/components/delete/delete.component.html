@@ -1,0 +1,19 @@
+<div class="dialog-header">
+  <h2 mat-dialog-title class="dialog-header__title-delete">Eliminar héroe</h2>
+  <mat-icon (click)="closeDialog()">close</mat-icon>
+</div>
+
+<mat-dialog-content class="dialog-message">
+  <div class="dialog-message__warning">
+    <img src="icon.svg" alt="warning-icon" class="dialog-message__warning-icon">
+    <div class="dialog-message__warning-text">
+      <p class="dialog-message__warning-text__first-line"><b>¿Estás seguro de querer eliminar este héroe?</b></p>
+      <p class="dialog-message__warning-text__second-line">Una vez eliminado no podrás revertir esta acción.</p>
+    </div>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions class="dialog-actions">
+  <button mat-flat-button (click)="closeDialog()" class="dialog-actions__cancel">Cancelar</button>
+  <button mat-flat-button (click)="deleteHero()" class="dialog-actions__confirm">Sí eliminar</button>
+</mat-dialog-actions>

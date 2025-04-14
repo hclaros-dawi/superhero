@@ -1,0 +1,151 @@
+@import '../../styles/base/variables';
+@import '../../styles/base/typography';
+
+.hero-section {
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 18rem);
+    gap: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1rem;
+    padding-bottom: 4rem;
+
+    @media screen and (max-width: 1260px) and (min-width: 1201px) {
+      grid-template-columns: repeat(3, 18rem);
+    }
+
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 18rem);
+    }
+
+    @media screen and (max-width: 953px) and (min-width: 901px) {
+      grid-template-columns: repeat(2, 18rem);
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 18rem);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__grid-item {
+    box-shadow: .03rem .3rem 1.375rem #d3d3d3;
+
+    &__card {
+      max-height: 100%;
+      border-radius: 0;
+      background-color: #FFFFFF;
+
+      &-img {
+        height: 21rem;
+        object-fit: cover;
+      }
+
+      &-title {
+        padding: 1rem;
+        min-height: 1.75rem;
+        line-height: $line-height-140;
+        font-size: 1.25rem;
+        font-weight: $font-weight-normal;
+
+        @media (max-width: 314px) and (min-width: 169px) {
+          font-size: 1rem;
+        }
+
+        @media (max-width: 168px) {
+          font-size: 0.8rem;
+        }
+      }
+
+      &-subtitle {
+        padding-left: 1rem;
+        height: 1.375rem;
+        line-height: $line-height-140;
+        font-size: 1rem;
+        font-weight: $font-weight-bold;
+        letter-spacing: 0;
+
+        @media (max-width: 314px) and (min-width: 169px) {
+          font-size: 0.7rem;
+        }
+
+        @media (max-width: 168px) {
+          font-size: 0.5rem;
+        }
+      }
+
+      &-content {
+        &__description {
+          font-size: .875rem;
+          height: 3.1875rem;
+          line-height: $line-height-120;
+          margin-top: 4.8rem;
+          font-weight: $font-weight-normal;
+          letter-spacing: 0;
+
+          @media (max-width: 768px) and (min-width: 460px) {
+            padding-top: 3rem;
+            margin: 0;
+          }
+
+          @media (max-width: 314px) and (min-width: 169px) {
+            font-size: 0.5rem;
+          }
+
+          @media (max-width: 168px) {
+            font-size: 0.4rem;
+          }
+        }
+
+        &__location {
+          font-size: 1rem;
+          height: 1.1875rem;
+          line-height: $line-height-120;
+          letter-spacing: 0;
+          font-weight: $font-weight-thin;
+          padding-top: 2rem;
+
+          @media (max-width: 314px) and (min-width: 169px) {
+            font-size: 0.5rem;
+          }
+
+          @media (max-width: 168px) {
+            font-size: 0.4rem;
+          }
+        }
+      }
+    }
+
+    &__actions {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 0.3rem;
+
+      &-edit {
+        width: 7rem;
+      }
+
+      &-delete {
+        width: 7rem;
+      }
+    }
+  }
+}
+
+.see-more-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 6rem;
+  padding-bottom: 3rem;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

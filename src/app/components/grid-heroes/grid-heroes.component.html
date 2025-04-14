@@ -1,0 +1,67 @@
+<div class="loader" *ngIf="loading; else contentLoaded">
+  <mat-spinner mode="indeterminate" diameter="50"></mat-spinner>
+</div>
+
+<ng-template #contentLoaded>
+  <div *ngIf="filteredHeroes.length > 0; else showAll" class="single-card">
+    <section class="hero-section">
+      <div class="hero-section__grid">
+        <div class="hero-section__grid-item" *ngFor="let hero of loadedHeroes">
+          <mat-card class="hero-section__grid-item__card">
+            <img mat-card-image [src]="hero.image" alt="{{ hero.name }}" class="hero-section__grid-item__card-img">
+            <mat-card-title class="hero-section__grid-item__card-title">{{ hero.name }}</mat-card-title>
+            <mat-card-subtitle class="hero-section__grid-item__card-subtitle">{{ hero.powers }}</mat-card-subtitle>
+            <mat-card-content class="hero-section__grid-item__card-content">
+              <p class="hero-section__grid-item__card-content__description">{{ hero.description }}</p>
+              <p class="hero-section__grid-item__card-content__location">{{ hero.location }}</p>
+            </mat-card-content>
+            <mat-card-actions class="hero-section__grid-item__actions">
+              <button mat-flat-button (click)="openCreateEditDialog.emit(hero)"
+                class="hero-section__grid-item__actions-edit">
+                <mat-icon>edit</mat-icon> Editar
+              </button>
+              <button mat-flat-button (click)="openDeleteDialog.emit(hero)"
+                class="hero-section__grid-item__actions-delete">
+                Eliminar
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </section>
+  </div>
+</ng-template>
+
+<ng-template #showAll>
+  <div *ngIf="filteredHeroes.length === 0">
+    <section class="hero-section">
+      <div class="hero-section__grid">
+        <div class="hero-section__grid-item" *ngFor="let hero of heroes">
+          <mat-card class="hero-section__grid-item__card">
+            <img mat-card-image [src]="hero.image" alt="{{ hero.name }}" class="hero-section__grid-item__card-img">
+            <mat-card-title class="hero-section__grid-item__card-title">{{ hero.name }}</mat-card-title>
+            <mat-card-subtitle class="hero-section__grid-item__card-subtitle">{{ hero.powers }}</mat-card-subtitle>
+            <mat-card-content class="hero-section__grid-item__card-content">
+              <p class="hero-section__grid-item__card-content__description">{{ hero.description }}</p>
+              <p class="hero-section__grid-item__card-content__location">{{ hero.location }}</p>
+            </mat-card-content>
+            <mat-card-actions class="hero-section__grid-item__actions">
+              <button mat-flat-button (click)="openCreateEditDialog.emit(hero)"
+                class="hero-section__grid-item__actions-edit">
+                <mat-icon>edit</mat-icon> Editar
+              </button>
+              <button mat-flat-button (click)="openDeleteDialog.emit(hero)"
+                class="hero-section__grid-item__actions-delete">
+                Eliminar
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </section>
+  </div>
+</ng-template>
+
+<section class="see-more-section" *ngIf="filteredHeroes.length > loadedHeroes.length">
+  <button mat-flat-button (click)="loadMore.emit()" class="see-more-section__button">Ver más</button>
+</section>

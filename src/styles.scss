@@ -1,11 +1,63 @@
+@import 'app/styles/base/variables';
+@import 'app/styles/base/typography';
+@import 'app/styles/base/dialog';
+
 html,
 body {
-  height: 100%;
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+:root {
+  --mat-button-bg-color: #8A42FB;
+  --mat-button-border-radius: 2rem;
+  --mat-button-text-color: #ffffff;
+  --mdc-filled-button-label-text-size: 1rem;
+  --mdc-filled-button-label-text-weight: 400;
+}
+
+//botón
+.search-bar__button-add .mat-mdc-button-touch-target {
+  background-color: var(--mat-button-bg-color);
+  border-radius: var(--mat-button-border-radius);
+  color: var(--mat-button-text-color);
+  font-weight: var(--mdc-filled-button-label-text-weight);
+}
+
+
+.search-bar__button-add.mat-mdc-unelevated-button .mat-mdc-button-touch-target {
+  font-size: var(--mdc-filled-button-label-text-size);
+
+}
+
+.search-bar__button-add.mat-mdc-unelevated-button:not(:disabled) {
+  /*color: initial;  Restablecer el color del texto */
+  background-color: initial;
+}
+
+.cdk-text-field-autofill-monitored:not(:-webkit-autofill) {
+  animation: cdk-text-field-autofill-end 0s 1ms;
+  border: none;
+  padding-left: 1.7rem;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+}
+
+.mat-mdc-icon-button {
+  width: auto !important;
+  height: auto !important;
+  padding: -0 !important;
+}
+
+.search-icon {
+  color: #ffffff;
+  background-color: $color-primary;
+  border-radius: 2.5rem;
+  padding: 1.5rem;
+  gap: .5rem;
 }
 
 .mat-mdc-snack-bar-container.exito-snackbar {
@@ -14,13 +66,29 @@ body {
   --mat-snack-bar-container-width: '4rem';
   --mdc-snackbar-supporting-text-color: #000000;
   --mat-mdc-snack-bar-label-width: 'auto';
- }
+}
 
 .mat-mdc-snack-bar-container.error-snackbar {
   --mat-snack-bar-button-color: #000000;
   --mdc-snackbar-container-color: #FB6A6A;
   --mat-snack-bar-container-width: '4rem';
-   --mdc-snackbar-supporting-text-color: #000000;
+  --mdc-snackbar-supporting-text-color: #000000;
   --mat-mdc-snack-bar-label-width: 'auto';
- }
+}
 
+.hero-section__grid-item__actions-edit.mat-mdc-unelevated-button:not(:disabled) {
+  background-color: #8A42FB;
+  color: #FFFFFF;
+  font-weight: 300;
+}
+
+.hero-section__grid-item__actions-delete.mat-mdc-unelevated-button:not(:disabled) {
+  background-color: #F3F3F3;
+  color: #343434;
+}
+
+.see-more-section__button.mat-mdc-unelevated-button:not(:disabled) {
+  background-color: #8A42FB;
+  color: #FFFFFF;
+  font-weight: 300;
+}

@@ -1,0 +1,56 @@
+@import '../../styles/base/variables';
+@import '../../styles/base/typography';
+
+.section-header {
+  position: relative;
+  z-index: 2;
+
+  &__image {
+    width: 100%;
+    z-index: -1;
+    position: relative;
+  }
+
+  &__logo {
+    position: absolute;
+    z-index: 1000;
+    top: 4.5rem;
+    left: 5.5rem;
+    width: 15.375rem;
+    height: 6.9375rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .section-header {
+    &__image {
+      width: 100%;
+      object-fit: cover;
+      height: 25rem;
+    }
+
+    &__logo {
+      position: absolute;
+      top: 4.155rem;
+      left: 4.875rem;
+      width: 12.75rem;
+      height: 5.7531rem;
+    }
+
+    &_txt {
+      display: none
+    }
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1359px) {
+  .section-header {
+    &__logo {
+      position: absolute;
+      top: 3rem;
+      left: 2.2rem;
+      width: 15.375rem;
+      height: 5.5rem;
+    }
+  }
+}

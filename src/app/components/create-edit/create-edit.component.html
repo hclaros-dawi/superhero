@@ -1,0 +1,52 @@
+<div class="dialog">
+  <div class="dialog__container">
+    <div class="dialog__header">
+      <h2 class="dialog__title">Editar o crear</h2>
+      <button class="dialog__close-button" (click)="closeDialog()" mat-icon-button>
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+
+    <form [formGroup]="heroForm" (ngSubmit)="saveHero()">
+      <div class="dialog__row">
+        <div class="dialog__field">
+          <label class="dialog__label">Nombre</label>
+          <input type="text" formControlName="name" class="dialog__input dialog__input--name" placeholder="Nombre">
+        </div>
+
+        <div class="dialog__field">
+          <label class="dialog__label">Superpoder</label>
+          <input type="text" formControlName="powers" class="dialog__input dialog__input--power"
+            placeholder="Superpoder">
+        </div>
+      </div>
+
+      <label class="dialog__label">Ciudad</label>
+      <input type="text" formControlName="location" class="dialog__input dialog__input--city" placeholder="Ciudad">
+
+      <label class="dialog__label">Descripción</label>
+      <textarea formControlName="description" class="dialog__textarea" placeholder="Ingresa una descripción"></textarea>
+
+      <label class="dialog__label">Elige una imagen</label>
+      <div class="dialog__file-upload">
+        <button mat-flat-button class="dialog__file-button" (click)="selectFile(fileInput, $event)">Seleccionar archivo</button>
+        <span class="dialog__file-name">{{ fileName || "Sin archivos seleccionados" }}</span>
+      </div>
+      <input id="fileInput" #fileInput type="file" (change)="handleFile($event)" accept="image/*" hidden />
+
+      <div class="dialog__footer">
+        <label>
+          <input type="checkbox" class="dialog__checkbox" formControlName="termsAccepted">
+          Acepto los <u>Terminos y condiciones</u>
+        </label>
+
+        <div class="dialog__actions">
+          <button mat-button type="submit" class="dialog__save-button"
+            [disabled]="!isEditMode && !heroForm.valid && !hero.id">
+            Guardar héroe
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

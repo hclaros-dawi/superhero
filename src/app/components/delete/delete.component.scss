@@ -1,45 +1,43 @@
 @import '../../styles/base/variables';
-@import '../../styles/base/mixins';
 @import '../../styles/base/typography';
 
-.div-top {
+.dialog-header {
   display: flex;
-  justify-content: space-between; //espaciado máximo entre los elementos
+  justify-content: space-between;
   align-items: center;
-  margin: .625rem;
+  padding: .625rem;
 
-  &_tit-eliminar {
+  &__title-delete {
     margin: 0;
     text-align: center;
-    flex-grow: 1; //título ocupe el espacio disponible
+    flex-grow: 1;
     font-size: 1.2em;
     padding: 0;
   }
 }
 
-//contenedor del mensaje de advertencia
-.mensaje-div {
-  &_advertencia {
+.dialog-message {
+  &__warning {
     display: flex;
     justify-content: left;
     margin: 0;
     padding: 0;
 
-    &_imagen {
-      margin: 0.6em;
-      width: 5%; //ocupará el 5% del ancho del contenedor
+    &__warning-icon {
+      padding: 0.6em;
+      width: 5%;
     }
 
-    &_adv-txt {
+    &__warning-text {
       margin: 0;
-      width: 95%; //ocupe el 95% restante del contenedor
+      width: 95%;
 
-      &_txt1-adv {
+      &__first-line {
         font-size: 1.2rem;
         margin-bottom: 0;
       }
 
-      &_txt2-adv {
+      &__second-line {
         font-size: 1rem;
         margin-top: 0;
         padding-top: 0.2rem;
@@ -48,13 +46,13 @@
   }
 }
 
-.div-botones {
-  &_cerrar {
+.dialog-actions {
+  &__cancel {
     background-color: $color-light;
     color: $color-secondary;
   }
 
-  &_confirmar {
+  &__confirm {
     background-color: $color-primary;
   }
 }

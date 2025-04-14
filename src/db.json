@@ -3,114 +3,119 @@
     {
       "id": "1",
       "name": "Wonder Woman",
-      "poderes": "Super fuerza, vuelo, combate experto, resistencia sobrehumana, reflejos mejorados",
-      "lugar": "Themyscira",
-      "descripcion": "Princesa amazona, guerrera legendaria y defensora de la justicia en el mundo de los hombres.",
-      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/807.jpg"
+      "powers": "Super fuerza, vuelo, combate experto, resistencia sobrehumana, reflejos mejorados",
+      "location": "Themyscira",
+      "description": "Princesa amazona, guerrera legendaria y defensora de la justicia en el mundo de los hombres.",
+      "image": "https://www.superherodb.com/pictures2/portraits/10/100/807.jpg",
+      "termsAccepted": true
     },
     {
-      "id": "2",
       "name": "Hulk",
-      "poderes": "Fuerza ilimitada, resistencia sobrehumana, regeneración acelerada, invulnerabilidad",
-      "lugar": "New Mexico",
-      "descripcion": "Científico brillante transformado en un ser colosal de fuerza imparable tras un accidente con radiación gamma.",
-      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/83.jpg"
+      "powers": "Fuerza ilimitada, resistencia sobrehumana, regeneración acelerada, invulnerabilidad",
+      "location": "New Mexico",
+      "description": "Científico brillante transformado en un ser colosal de fuerza imparable tras un accidente con radiación gamma.",
+      "image": "https://www.superherodb.com/pictures2/portraits/10/100/83.jpg",
+      "termsAccepted": true,
+      "id": "2"
     },
     {
-      "id": "3",
       "name": "Captain Marvel",
-      "poderes": "Vuelo, fuerza sobrehumana, energía cósmica, absorción y proyección de energía",
-      "lugar": "Avengers Mansion",
-      "descripcion": "Piloto y exagente de inteligencia fusionada con ADN Kree, obteniendo poderes cósmicos que la convierten en una de las heroínas más poderosas del universo.",
-      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/103.jpg"
+      "powers": "Vuelo, fuerza sobrehumana, energía cósmica, absorción y proyección de energía",
+      "location": "Avengers Mansion",
+      "description": "Piloto y exagente de inteligencia fusionada con ADN Kree, obteniendo poderes cósmicos que la convierten en una de las heroínas más poderosas del universo.",
+      "image": "https://www.superherodb.com/pictures2/portraits/10/100/103.jpg",
+      "termsAccepted": true,
+      "id": "3"
     },
     {
       "id": "4",
       "name": "Nebula",
-      "poderes": "Superfuerza, agilidad, inteligencia, combate",
-      "lugar": "Nueva York",
-      "descripcion": "Nebula es una guerrera altamente entrenada y peligrosa, conocida por su relación tumultuosa con su padre adoptivo.",
-      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/10632.jpg"
+      "powers": "Superfuerza, agilidad, inteligencia, combate",
+      "location": "Nueva York",
+      "description": "Nebula es una guerrera altamente entrenada y peligrosa, conocida por su relación tumultuosa con su padre adoptivo.",
+      "image": "https://www.superherodb.com/pictures2/portraits/10/100/10632.jpg",
+      "termsAccepted": true
     },
     {
       "id": "5",
       "name": "Gamora",
-      "poderes": "Super fuerza, agilidad, resistencia, combate cuerpo a cuerpo",
-      "lugar": "C.I.T.T.",
-      "descripcion": "Gamora, la 'mujer más peligrosa del universo', fue criada por Thanos como su hija adoptiva y entrenada como asesina.",
-      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/65.jpg"
+      "powers": "Super fuerza, agilidad, resistencia, combate cuerpo a cuerpo",
+      "location": "C.I.T.T.",
+      "description": "Gamora, la 'mujer más peligrosa del universo', fue criada por Thanos como su hija adoptiva y entrenada como asesina.",
+      "image": "https://www.superherodb.com/pictures2/portraits/10/100/65.jpg",
+      "termsAccepted": true
     },
     {
       "id": "6",
       "name": "Batman",
-      "poderes": "Entrenamiento físico extremo, combate cuerpo a cuerpo, inteligencia avanzada, recursos ilimitados",
-      "lugar": "Gotham City",
-      "descripcion": "Bruce Wayne, huérfano a una edad temprana, juró vengar la muerte de sus padres luchando contra el crimen como el Caballero Oscuro.",
-      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/639.jpg"
+      "powers": "Entrenamiento físico extremo, combate cuerpo a cuerpo, inteligencia avanzada, recursos ilimitados",
+      "location": "Gotham City",
+      "description": "Bruce Wayne, huérfano a una edad temprana, juró vengar la muerte de sus padres luchando contra el crimen como el Caballero Oscuro.",
+      "image": "https://www.superherodb.com/pictures2/portraits/10/100/639.jpg",
+      "termsAccepted": true
     },
     {
       "id": "7",
       "name": "Black Widow",
-      "poderes": "Habilidad en espionaje, combate cuerpo a cuerpo, agilidad extrema, maestría en armas",
-      "lugar": "Varios lugares",
-      "descripcion": "Natasha Romanoff es una ex espía rusa convertida en miembro de los Vengadores, conocida por su astucia, habilidades de combate y su dominio de las artes letales.",
-      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/248.jpg"
+      "powers": "Habilidad en espionaje, combate cuerpo a cuerpo, agilidad extrema, maestría en armas",
+      "location": "Varios lugares",
+      "description": "Natasha Romanoff es una ex espía rusa convertida en miembro de los Vengadores, conocida por su astucia, habilidades de combate y su dominio de las artes letales.",
+      "image": "https://www.superherodb.com/pictures2/portraits/10/100/248.jpg",
+      "termsAccepted": true
     },
     {
       "id": "8",
       "name": "Iron Man",
-      "poderes": "Traje de alta tecnología, inteligencia avanzada, armas avanzadas, vuelo",
-      "lugar": "Malibu, California",
-      "descripcion": "Tony Stark, un genio millonario, utiliza su intelecto y un traje de alta tecnología para luchar contra el crimen como Iron Man.",
-      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/85.jpg"
+      "powers": "Traje de alta tecnología, inteligencia avanzada, armas avanzadas, vuelo",
+      "location": "Malibu, California",
+      "description": "Tony Stark, un genio millonario, utiliza su intelecto y un traje de alta tecnología para luchar contra el crimen como Iron Man.",
+      "image": "https://www.superherodb.com/pictures2/portraits/10/100/85.jpg",
+      "termsAccepted": true
     },
     {
       "id": "9",
       "name": "Thor",
-      "poderes": "Control del trueno, fuerza sobrehumana, inmortalidad, vuelo (con el martillo Mjolnir)",
-      "lugar": "Asgard",
-      "descripcion": "Hijo de Odin, dios del trueno y protector de Asgard, Thor usa su martillo Mjolnir para defender los Nueve Reinos.",
-      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/140.jpg"
+      "powers": "Control del trueno, fuerza sobrehumana, inmortalidad, vuelo (con el martillo Mjolnir)",
+      "location": "Asgard",
+      "description": "Hijo de Odin, dios del trueno y protector de Asgard, Thor usa su martillo Mjolnir para defender los Nueve Reinos.",
+      "image": "https://www.superherodb.com/pictures2/portraits/10/100/140.jpg",
+      "termsAccepted": true
     },
     {
       "id": "10",
       "name": "Flash",
-      "poderes": "Velocidad sobrehumana, viaje en el tiempo, vibración molecular",
-      "lugar": "Central City",
-      "descripcion": "Barry Allen, el hombre más rápido del mundo, utiliza su velocidad para luchar contra el crimen y proteger a los inocentes.",
-      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/891.jpg"
+      "powers": "Velocidad sobrehumana, viaje en el tiempo, vibración molecular",
+      "location": "Central City",
+      "description": "Barry Allen, el hombre más rápido del mundo, utiliza su velocidad para luchar contra el crimen y proteger a los inocentes.",
+      "image": "https://www.superherodb.com/pictures2/portraits/10/100/891.jpg",
+      "termsAccepted": true
     },
     {
-      "id": "11",
-      "name": "Aquaman",
-      "poderes": "Control de agua, superfuerza, telepatía marina, resistencia al agua",
-      "lugar": "Atlántida",
-      "descripcion": "Arthur Curry, el rey de Atlántida, posee habilidades tanto acuáticas como terrestres y lucha para proteger tanto la Tierra como los océanos.",
-      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/634.jpg"
+      "name": "Aquaman3",
+      "powers": "Control de agua, superfuerza, telepatía marina, resistencia al agua",
+      "location": "Atlántida",
+      "description": "Arthur Curry, el rey de Atlántida, posee habilidades tanto acuáticas como terrestres y lucha para proteger tanto la Tierra como los océanos.",
+      "image": "https://www.superherodb.com/pictures2/portraits/10/100/634.jpg",
+      "termsAccepted": true,
+      "id": "11"
     },
     {
       "id": "12",
       "name": "Doctor Strange",
-      "poderes": "Magia, hechicería, control del tiempo, habilidades de combate",
-      "lugar": "Kamar-Taj",
-      "descripcion": "Stephen Strange, un ex-cirujano que se convierte en el Hechicero Supremo, luchando contra amenazas místicas y dimensionales.",
-      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/55.jpg"
+      "powers": "Magia, hechicería, control del tiempo, habilidades de combate",
+      "location": "Kamar-Taj",
+      "description": "Stephen Strange, un ex-cirujano que se convierte en el Hechicero Supremo, luchando contra amenazas místicas y dimensionales.",
+      "image": "https://www.superherodb.com/pictures2/portraits/10/100/55.jpg",
+      "termsAccepted": true
     },
     {
-      "id": "13",
       "name": "Black Panther",
-      "poderes": "Superfuerza, agilidad, sentidos mejorados, habilidades de combate",
-      "lugar": "Wakanda",
-      "descripcion": "T'Challa, el rey de Wakanda, utiliza la hierba en forma de planta para obtener habilidades mejoradas y lucha contra el crimen como Black Panther.",
-      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/247.jpg"
-    },
-    {
-      "id": "14",
-      "name": "Deadpool",
-      "poderes": "Regeneración celular, habilidades de combate, agilidad, resistencia",
-      "lugar": "Varios lugares",
-      "descripcion": "Wade Wilson, un ex mercenario con un sentido del humor único, usa su habilidad de regeneración para luchar contra el crimen y su mortalidad.",
-      "imagen": "https://www.superherodb.com/pictures2/portraits/10/100/835.jpg"
+      "powers": "Superfuerza, agilidad, sentidos mejorados, habilidades de combate",
+      "location": "Wakanda",
+      "description": "T'Challa, el rey de Wakanda, utiliza la hierba en forma de planta para obtener habilidades mejoradas y lucha contra el crimen como Black Panther.",
+      "image": "https://www.superherodb.com/pictures2/portraits/10/100/247.jpg",
+      "termsAccepted": true,
+      "id": "13"
     }
   ]
 }
