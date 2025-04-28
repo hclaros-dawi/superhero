@@ -2,10 +2,11 @@ import { Component, ChangeDetectorRef, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { HeroeInterface } from '../../interfaces/heroeinterface';
+import { HeroeInterface } from '../../models/heroeinterface';
 import { MatDialogModule, MatDialogRef, MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { HeroeService } from '../../servicios/heroe.service';
+import { SnackbarService } from '../../servicios/snackbar.service';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -26,18 +27,17 @@ import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angula
 export class CreateEditComponent implements OnInit {
 
   private readonly heroeService = inject(HeroeService);
+  private readonly snackBarService = inject(SnackbarService);
   private readonly dialog = inject(MatDialog);
   private readonly cdr = inject(ChangeDetectorRef);
   private readonly dialogRef = inject(MatDialogRef<CreateEditComponent>);
   private readonly data = inject<HeroeInterface>(MAT_DIALOG_DATA);
-  public hero: HeroeInterface = { name: '', powers: '', location: '', description: '', image: '' };
-
-  fileName: string = "";
-  heroForm: FormGroup = new FormGroup({});
-  isEditMode: boolean = false;
+  protected hero: HeroeInterface = { name: '', powers: '', location: '', description: '', image: '' };
+  protected fileName: string = "";
+  protected heroForm: FormGroup = new FormGroup({});
+  protected isEditMode: boolean = false;
 
   ngOnInit(): void {
-    //determine if we're editing an existing hero or creating a new one
     if (this.data) {
       this.hero = this.data;
       this.isEditMode = true;
@@ -69,13 +69,13 @@ export class CreateEditComponent implements OnInit {
     }
   }
 
-  selectFile(fileInput: HTMLInputElement, event: MouseEvent): void {
+  protected selectFile(fileInput: HTMLInputElement, event: MouseEvent): void {
     event.preventDefault();
     event.stopPropagation();
     fileInput.click();
   }
 
-  handleFile(event: Event) {
+  protected handleFile(event: Event) {
     const input = event.target as HTMLInputElement;
     const file = input?.files?.[0];
 
@@ -89,7 +89,7 @@ export class CreateEditComponent implements OnInit {
         if (typeof result === 'string') {
           this.heroForm.patchValue({ image: result });
         } else {
-          this.heroeService.showError('Ha ocurrido un error');
+          this.snackBarService.showError('Ha ocurrido un error');
         }
       };
       reader.readAsDataURL(file);
@@ -98,10 +98,11 @@ export class CreateEditComponent implements OnInit {
     }
   }
 
-  saveHero() {
+  protected saveHero() {
     if (this.heroForm.invalid || (!this.isEditMode && !this.heroForm.value.termsAccepted)) {
-      return;
+      throw new Error('Formulario inválido o términos no aceptados');
     }
+    
     const heroData: HeroeInterface = {
       name: this.heroForm.value.name,
       powers: this.heroForm.value.powers,
@@ -116,8 +117,8 @@ export class CreateEditComponent implements OnInit {
         next: (updatedHero) => {
           this.dialogRef.close(updatedHero);
         },
-        error: (err) => {
-          console.error('Error al crear héroe:', err);
+        error: () => {
+          this.snackBarService.showError('Error al editar héroe');
         }
       });
     } else {
@@ -125,12 +126,14 @@ export class CreateEditComponent implements OnInit {
         next: (newHero) => {
           this.dialogRef.close(newHero);
         },
-        error: (err) => console.error('Error al actualizar:', err)
+        error: () => {
+          this.snackBarService.showError('Error al crear héroe');
+        }
       });
     }
   }
 
-  closeDialog() {
+  protected closeDialog() {
     this.dialogRef.close();
   }
 }

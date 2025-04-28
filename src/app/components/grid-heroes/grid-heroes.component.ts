@@ -4,7 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { HeroeInterface } from '../../interfaces/heroeinterface';
+import { HeroeInterface } from '../../models/heroeinterface';
 import { CapitalizePipe } from '../../pipes/capitalize.pipe';
 
 @Component({

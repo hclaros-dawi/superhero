@@ -91,13 +91,13 @@
       "termsAccepted": true
     },
     {
-      "id": "11",
-      "name": "Aquaman3",
+      "name": "Aquaman",
       "powers": "Control de agua, superfuerza, telepatía marina, resistencia al agua",
       "location": "Atlántida",
       "description": "Arthur Curry, el rey de Atlántida, posee habilidades tanto acuáticas como terrestres y lucha para proteger tanto la Tierra como los océanos.",
       "image": "https://www.superherodb.com/pictures2/portraits/10/100/634.jpg",
-      "termsAccepted": true
+      "termsAccepted": true,
+      "id": "11"
     },
     {
       "id": "12",
@@ -109,13 +109,13 @@
       "termsAccepted": true
     },
     {
-      "id": "13",
       "name": "Black Panther",
       "powers": "Superfuerza, agilidad, sentidos mejorados, habilidades de combate",
       "location": "Wakanda",
       "description": "T'Challa, el rey de Wakanda, utiliza la hierba en forma de planta para obtener habilidades mejoradas y lucha contra el crimen como Black Panther.",
       "image": "https://www.superherodb.com/pictures2/portraits/10/100/247.jpg",
-      "termsAccepted": true
+      "termsAccepted": true,
+      "id": "13"
     }
   ]
 }

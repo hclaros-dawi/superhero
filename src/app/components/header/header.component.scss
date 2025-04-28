@@ -22,6 +22,7 @@
 }
 
 @media screen and (max-width: 768px) {
+
   .section-header {
     &__image {
       width: 100%;
@@ -36,14 +37,11 @@
       width: 12.75rem;
       height: 5.7531rem;
     }
-
-    &_txt {
-      display: none
-    }
   }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1359px) {
+
   .section-header {
     &__logo {
       position: absolute;

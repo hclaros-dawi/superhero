@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { HeroeService } from '../../servicios/heroe.service';
-import { HeroeInterface } from '../../interfaces/heroeinterface';
+import { SnackbarService } from '../../servicios/snackbar.service';
+import { HeroeInterface } from '../../models/heroeinterface';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -38,37 +39,38 @@ import { delay, switchMap } from 'rxjs/operators';
 
 export class HomeComponent implements OnInit {
 
-  heroes: HeroeInterface[] = [];
-  filteredHeroes: HeroeInterface[] = [];
-  loadedHeroes: HeroeInterface[] = [];
-  page: number = 0;
-  maxPage: number = 8;
-  loading: boolean = false;
-
+  private readonly maxPage: number = 8;
   private readonly heroService = inject(HeroeService);
+  private readonly snackBarService = inject(SnackbarService);
   private readonly dialog = inject(MatDialog);
+  private page: number = 0;
+  protected heroes: HeroeInterface[] = [];
+  protected filteredHeroes: HeroeInterface[] = [];
+  protected loadedHeroes: HeroeInterface[] = [];
+  protected loading: boolean = false;
 
   ngOnInit(): void {
     this.loadHeroes();
   }
 
-  loadMore = () => {
-    if (this.page * this.maxPage >= this.filteredHeroes.length) return;
+  protected loadMore = (): void => {
+    if (this.page * this.maxPage < this.filteredHeroes.length) {
 
-    const start = this.page * this.maxPage;
-    const end = start + this.maxPage;
-    const heroesToLoad = this.filteredHeroes.slice(start, end);
+      const start = this.page * this.maxPage;
+      const end = start + this.maxPage;
+      const heroesToLoad = this.filteredHeroes.slice(start, end);
 
-    heroesToLoad.forEach(hero => {
-      if (!this.loadedHeroes.some(existingHero => existingHero.id === hero.id)) {
-        this.loadedHeroes.push(hero);
-      }
-    });
+      heroesToLoad.forEach(hero => {
+        if (!this.loadedHeroes.some(existingHero => existingHero.id === hero.id)) {
+          this.loadedHeroes.push(hero);
+        }
+      });
 
-    this.page += 1;
+      this.page += 1;
+    }
   };
 
-  loadHeroes = () => {
+  protected loadHeroes = () => {
     this.loading = true;
 
     this.heroService.getHeroes()
@@ -83,21 +85,20 @@ export class HomeComponent implements OnInit {
           this.loading = false;
         },
         error: () => {
-          this.heroService.showError('Ha ocurrido un error');
+          this.snackBarService.showError('Ha ocurrido un error');
           this.loading = false;
         }
       });
   };
 
-  handleFiltered(filteredHeroes: HeroeInterface[]): void {
+  protected handleFiltered(filteredHeroes: HeroeInterface[]): void {
     this.filteredHeroes = [...filteredHeroes];
     this.loadedHeroes = [];
     this.page = 0;
     this.loadMore();
   }
 
-
-  openDeleteDialog(hero: HeroeInterface): void {
+  protected openDeleteDialog(hero: HeroeInterface): void {
     const dialogRef = this.dialog.open(DeleteComponent);
 
     dialogRef.afterClosed().pipe(
@@ -114,16 +115,15 @@ export class HomeComponent implements OnInit {
         this.filteredHeroes = this.filteredHeroes.filter(h => h.id !== hero.id);
         this.loadedHeroes = this.loadedHeroes.filter(h => h.id !== hero.id);
 
-        this.heroService.showSuccess('Este héroe se ha eliminado');
+        this.snackBarService.showSuccess('Este héroe se ha eliminado');
       },
       error: () => {
-        this.heroService.showError('Ha ocurrido un error');
+        this.snackBarService.showError('Ha ocurrido un error');
       }
     });
   }
 
-
-  openCreateEditDialog(hero?: HeroeInterface): void {
+  protected openCreateEditDialog(hero?: HeroeInterface): void {
     const dialogRef = this.dialog.open(CreateEditComponent, {
       data: hero ? { ...hero } : null
     });
@@ -135,7 +135,7 @@ export class HomeComponent implements OnInit {
           this.filteredHeroes = this.filteredHeroes.map(h => h.id === createdOrUpdatedHero.id ? createdOrUpdatedHero : h);
           this.loadedHeroes = this.loadedHeroes.map(h => h.id === createdOrUpdatedHero.id ? createdOrUpdatedHero : h);
 
-          this.heroService.showSuccess('Héroe modificado con éxito');
+          this.snackBarService.showSuccess('Héroe modificado con éxito');
 
         } else {
           if (!this.heroes.some(h => h.id === createdOrUpdatedHero.id)) {
@@ -148,10 +148,10 @@ export class HomeComponent implements OnInit {
             this.loadedHeroes.push(createdOrUpdatedHero);
           }
 
-          this.heroService.showSuccess('Héroe creado con éxito');
+          this.snackBarService.showSuccess('Héroe creado con éxito');
         }
       } else if (createdOrUpdatedHero === false) {
-        this.heroService.showError('Ha ocurrido un error');
+        this.snackBarService.showError('Ha ocurrido un error');
       }
     });
   }

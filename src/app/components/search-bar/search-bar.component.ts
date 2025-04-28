@@ -1,12 +1,12 @@
 import { Component, inject, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormGroup, FormControl } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { HeroeService } from '../../servicios/heroe.service';
-import { HeroeInterface } from '../../interfaces/heroeinterface';
+import { HeroeInterface } from '../../models/heroeinterface';
 import { CapitalizePipe } from '../../pipes/capitalize.pipe';
 
 @Component({
@@ -24,23 +24,27 @@ import { CapitalizePipe } from '../../pipes/capitalize.pipe';
   styleUrl: './search-bar.component.scss'
 })
 export class SearchBarComponent {
-  searchForm = new FormGroup({
-    heroeInput: new FormControl('')
+  private readonly fb = inject(FormBuilder);
+
+  searchForm = this.fb.group({
+    heroeInput: ['', Validators.required]
   });
 
-  heroes: HeroeInterface[] = [];
-  page: number = 0;
-  filteredHeroes: HeroeInterface[] = [];
-  loadedHeroes: HeroeInterface[] = [];
+  private readonly heroes: HeroeInterface[] = [];
   private readonly heroeService = inject(HeroeService);
   private readonly capitalizePipe = inject(CapitalizePipe);
+  private page: number = 0;
+  private loadedHeroes: HeroeInterface[] = [];
+  private filteredHeroes: HeroeInterface[] = [];
 
   @Input() fnLoadMore!: () => void;
   @Input() fnLoadHeroes!: () => void;
   @Output() onHeroCreated = new EventEmitter<void>();
   @Output() onHeroFiltered = new EventEmitter<HeroeInterface[]>();
 
-  filterHeroByName(): void {
+  protected filterHeroByName(): void {
+    if (this.searchForm.valid) {
+
     this.page = 0;
     let searchedHero = this.searchForm.get('heroeInput')?.value;
     if (!searchedHero?.trim()) {
@@ -53,10 +57,12 @@ export class SearchBarComponent {
         this.onHeroFiltered.emit(this.filteredHeroes);
       });
     }
+
     this.loadedHeroes = [];
   }
+}
 
-  onCreateButtonClick(): void {
+  protected onCreateButtonClick(): void {
     this.onHeroCreated.emit();
   }
 }

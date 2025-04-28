@@ -1,11 +1,11 @@
 <section>
   <div class="search-bar">
     <div class="search-bar__container">
-      <form [formGroup]="searchForm" (ngSubmit)="filterHeroByName()">
+      <form [formGroup]="searchForm" class="search-bar__container__form">
         <label for="heroInput"></label>
         <input id="heroInput" formControlName="heroeInput" type="text" placeholder="Busca un héroe"
           class="search-bar__input" matInput autocomplete="off">
-        <button mat-icon-button class="search-bar__button" type="submit">
+        <button mat-icon-button class="search-bar__button" type="button" (click)="filterHeroByName()">
           <mat-icon class="search-icon">search</mat-icon>
         </button>
       </form>

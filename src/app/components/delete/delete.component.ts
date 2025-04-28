@@ -20,11 +20,11 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 export class DeleteComponent {
   private readonly dialogRef = inject(MatDialogRef<DeleteComponent>);
 
-  deleteHero(): void {
+  protected deleteHero(): void {
     this.dialogRef.close(true);
   }
 
-  closeDialog(): void {
+  protected closeDialog(): void {
     this.dialogRef.close(false);
   }
 }

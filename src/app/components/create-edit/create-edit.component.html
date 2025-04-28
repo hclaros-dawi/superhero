@@ -7,7 +7,7 @@
       </button>
     </div>
 
-    <form [formGroup]="heroForm" (ngSubmit)="saveHero()">
+    <form [formGroup]="heroForm">
       <div class="dialog__row">
         <div class="dialog__field">
           <label class="dialog__label">Nombre</label>
@@ -29,7 +29,8 @@
 
       <label class="dialog__label">Elige una imagen</label>
       <div class="dialog__file-upload">
-        <button mat-flat-button class="dialog__file-button" (click)="selectFile(fileInput, $event)">Seleccionar archivo</button>
+        <button mat-flat-button class="dialog__file-button" (click)="selectFile(fileInput, $event)">Seleccionar
+          archivo</button>
         <span class="dialog__file-name">{{ fileName || "Sin archivos seleccionados" }}</span>
       </div>
       <input id="fileInput" #fileInput type="file" (change)="handleFile($event)" accept="image/*" hidden />
@@ -41,8 +42,9 @@
         </label>
 
         <div class="dialog__actions">
-          <button mat-button type="submit" class="dialog__save-button"
-            [disabled]="!isEditMode && !heroForm.valid && !hero.id">
+          <button mat-button type="button" class="dialog__save-button"
+          [disabled]="!heroForm.valid || !heroForm.value.termsAccepted || (isEditMode && !hero.id)"
+          (click)="saveHero()">
             Guardar héroe
           </button>
         </div>

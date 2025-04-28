@@ -127,8 +127,9 @@
 }
 
 @media screen and (max-width: 768px) {
-  .dialog {
 
+  .dialog {
+    
     &__container {
       padding-bottom: 2rem;
     }
@@ -193,6 +194,7 @@
 }
 
 @media screen and (min-width: 769px) and (max-width: 975px) {
+
   .dialog {
     &__container {
       width: 90%;

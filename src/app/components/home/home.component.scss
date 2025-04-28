@@ -17,7 +17,7 @@
     max-width: 41.25rem;
     padding: 0 1rem;
 
-    h2 {
+    &__title {
       font-size: 1.9375rem;
       color: map-get(var.$colors, primary);
       @include ty.font-style('normal', 120);
@@ -26,7 +26,7 @@
       text-align: center;
     }
 
-    p {
+    &__text {
       font-size: 1rem;
       color: map-get(var.$colors, secondary);
       line-height: map-get(ty.$line-heights, 120);
