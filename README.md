@@ -2,7 +2,7 @@
 
 1. Installation and Setup
 
-### - ** Cloning the repository** 
+### - **Cloning the repository** 
 Run the following command in the terminal to clone the project:
 ```sh
 git clone https://github.com/hclaros-dawi/superhero.git
